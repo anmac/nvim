@@ -20,7 +20,7 @@ local options = {
 
   -- 5 syntax, highlighting and spelling
   background = "dark",
-  hlsearch = true,
+  hlsearch = false,
   termguicolors = true,
   cursorcolumn = false,
   cursorline = true,
@@ -66,7 +66,7 @@ local options = {
   foldmethod = "manual",
 
   -- 16 mapping
-  timeoutlen = 100,
+  timeoutlen = 500,
 
   -- 17 reading and writing files
   writebackup = true,
