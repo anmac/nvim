@@ -19,6 +19,13 @@ local plugins = {
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
   },
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "antosha417/nvim-lsp-file-operations",
+    },
+  },
 }
 
 local opts = {

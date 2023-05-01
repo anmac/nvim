@@ -76,3 +76,7 @@ keymap({ "n", "x" }, "<leader>d", "\"_d", opts)
 -- Select all
 keymap("n", "<C-a>", "ggVG", opts)
 
+
+-- Nvim-tree
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+
