@@ -5,9 +5,9 @@ local options = {
   terminal_colors = true,
   styles = {
     comments = { italic = true },
-    keywords = { italic = true, bold = true },
-    functions = {},
-    variables = { bold = true },
+    keywords = { italic = false, bold = false },
+    functions = { bold = true },
+    variables = { italic = true, bold = true },
     sidebars = "dark",
     floats = "dark",
   },
