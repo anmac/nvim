@@ -41,6 +41,14 @@ local plugins = {
       "antosha417/nvim-lsp-file-operations",
     },
   },
+  {
+    "akinsho/bufferline.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "echasnovski/mini.bufremove",
+    }
+  },
 }
 
 local opts = {

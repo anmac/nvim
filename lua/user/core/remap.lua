@@ -46,9 +46,11 @@ keymap("n", "<M-Down>", ":resize +2<CR>", opts)
 keymap("n", "<M-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<M-Right>", ":vertical resize +2<CR>", opts)
 
--- Navigate buffers
+-- Navigate and delete buffers
 keymap("n", "<Tab>", ":bnext<CR>", opts)
 keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
+keymap("n", "<leader>bd", ":bdelete<CR>", opts)
+keymap("n", "<leader>bD", ":bdelete!<CR>", opts)
 
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv=gv", opts)
