@@ -12,20 +12,18 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+  -- Core plugins
   "nvim-lua/plenary.nvim",
   "folke/neodev.nvim",
+
+  -- Colorscheme
   {
     "folke/tokyonight.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
   },
-  {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-      "antosha417/nvim-lsp-file-operations",
-    },
-  },
+
+  -- Treesitter
   { 
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
@@ -33,7 +31,16 @@ local plugins = {
       "nvim-treesitter/playground",
       "mrjones2014/nvim-ts-rainbow",
     }
-  }
+  },
+
+  -- UI
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "antosha417/nvim-lsp-file-operations",
+    },
+  },
 }
 
 local opts = {
