@@ -26,6 +26,14 @@ local plugins = {
       "antosha417/nvim-lsp-file-operations",
     },
   },
+  { 
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    dependencies = {
+      "nvim-treesitter/playground",
+      "mrjones2014/nvim-ts-rainbow",
+    }
+  }
 }
 
 local opts = {
