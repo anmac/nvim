@@ -108,7 +108,7 @@ nvim_tree.setup({
     timeout = 400,
   },
   modified = {
-    enable = true,
+    enable = false,
     show_on_dirs = true,
     show_on_open_dirs = true,
   },
