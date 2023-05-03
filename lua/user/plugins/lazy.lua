@@ -57,6 +57,19 @@ local plugins = {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufReadPost", "BufNewFile" },
   },
+
+  -- Tools: Telescope
+  {
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    dependencies = {
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      { "nvim-telescope/telescope-media-files.nvim" },
+      { "nvim-telescope/telescope-file-browser.nvim" },
+      { "nvim-telescope/telescope-symbols.nvim" },
+      { "nvim-telescope/telescope-project.nvim" },
+    },
+  }
 }
 
 local opts = {
