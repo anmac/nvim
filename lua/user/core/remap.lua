@@ -49,8 +49,8 @@ keymap("n", "<M-Right>", ":vertical resize +2<CR>", opts)
 -- Navigate and delete buffers
 keymap("n", "<Tab>", ":bnext<CR>", opts)
 keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
-keymap("n", "<leader>bd", ":bdelete<CR>", opts)
-keymap("n", "<leader>bD", ":bdelete!<CR>", opts)
+keymap("n", "<leader>bd", ":lua require('mini.bufremove').delete(n, false)<CR>", opts)
+keymap("n", "<leader>bD", ":lua require('mini.bufremove').delete(n, true)<CR>", opts)
 
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv=gv", opts)
@@ -65,11 +65,9 @@ keymap("x", ">", ">gv", opts)
 -- Stay cursor in place
 keymap("n", "J", "mzJ`z", opts)
 
--- Better scrolling and search view
+-- Better search view
 keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "<C-u>", "<C-u>zz", opts)
 
 -- Greatest remaps ever
 keymap("x", "<leader>p", "\"_dp", opts)
@@ -77,7 +75,6 @@ keymap({ "n", "x" }, "<leader>d", "\"_d", opts)
 
 -- Select all
 keymap("n", "<C-a>", "ggVG", opts)
-
 
 -- Nvim-tree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
