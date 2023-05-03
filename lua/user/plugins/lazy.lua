@@ -49,6 +49,10 @@ local plugins = {
       "echasnovski/mini.bufremove",
     }
   },
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+  },
 }
 
 local opts = {
