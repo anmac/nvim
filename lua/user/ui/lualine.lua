@@ -10,8 +10,12 @@ if not status_theme_ok then
   return
 end
 
-local hide_section_in_width = function()
+local hide_component_in_width = function()
   return vim.fn.winwidth(0) > 50
+end
+
+local hide_location_in_width = function()
+  return vim.fn.winwidth(0) > 100
 end
 
 local branch = {
@@ -37,7 +41,7 @@ local diff = {
     removed = "DiagnosticError",
   },
   symbols = { added = " ", modified = " ", removed = " " },
-  cond = hide_section_in_width,
+  cond = hide_component_in_width,
 }
 
 local location = {
@@ -47,6 +51,7 @@ local location = {
     return string.format("Ln %s,Col %s", line, col)
   end,
   color = { fg = "#fff" },
+  cond = hide_location_in_width,
 }
 
 local spaces = {
@@ -54,7 +59,7 @@ local spaces = {
     return "Spaces:" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
   end,
   color = { fg = "#fff" },
-  cond = hide_section_in_width,
+  cond = hide_component_in_width,
 }
 
 local eof = {
@@ -69,14 +74,14 @@ local eof = {
     end
   end,
   color = { fg = "#fff" },
-  cond = hide_section_in_width,
+  cond = hide_component_in_width,
 }
 
 local encoding = {
   "encoding",
   fmt = string.upper,
   color = { fg = "#fff" },
-  cond = hide_section_in_width,
+  cond = hide_component_in_width,
 }
 
 local filetype = {
