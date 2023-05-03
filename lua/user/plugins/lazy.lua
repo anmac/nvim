@@ -53,6 +53,10 @@ local plugins = {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
   },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+  },
 }
 
 local opts = {
