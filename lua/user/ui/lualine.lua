@@ -10,6 +10,11 @@ if not status_theme_ok then
   return
 end
 
+local git = require("user.resources.git_icons")
+local branch_icon = git.file_explorer.Branch
+local status = git.statusline
+local lsp = require("user.resources.diagnostics_icons")
+
 local hide_component_in_width = function()
   return vim.fn.winwidth(0) > 50
 end
@@ -20,7 +25,7 @@ end
 
 local branch = {
   "branch",
-  icon = { "", color = { fg = "#d16969", bg = "" } },
+  icon = { branch_icon, color = { fg = "#d16969", bg = "" } },
   color = { fg = "#dfafdf", bg = "" },
 }
 
@@ -28,7 +33,7 @@ local diagnostics = {
   "diagnostics",
   sources = { "nvim_lsp" },
   sections = { "error", "warn", "hint" },
-  symbols = { error = " ", warn = " ", hint = " " },
+  symbols = { error = lsp.Error, warn = lsp.Warn, hint = lsp.Hint },
   update_in_insert = true,
   always_visible = true,
 }
@@ -40,7 +45,7 @@ local diff = {
     modified = "DiagnosticWarn",
     removed = "DiagnosticError",
   },
-  symbols = { added = " ", modified = " ", removed = " " },
+  symbols = { added = status.Added, modified = status.Modified, removed = status.Removed },
   cond = hide_component_in_width,
 }
 
@@ -65,7 +70,7 @@ local spaces = {
 local eof = {
   function()
     local format = vim.bo.fileformat
-    if format == "unix" then
+    if format == "unix" or format == "mac" then
       return "LF"
     elseif format == "dos" then
       return "CRLF"
