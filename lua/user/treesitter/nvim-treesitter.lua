@@ -17,6 +17,7 @@ treesitter_config.setup({
   auto_install = true,
   ignore_install = {},
   indent = { enable = true },
+  autotag = { enable = true },
   highlight = {
     enable = true,
     disable = {},
@@ -52,6 +53,6 @@ treesitter_config.setup({
   rainbow = {
     enable = true,
     disable = {},
-    extended_mode = true,
+    extended_mode = false,
   },
 })

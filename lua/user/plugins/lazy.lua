@@ -27,9 +27,12 @@ local plugins = {
   { 
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       "nvim-treesitter/playground",
       "mrjones2014/nvim-ts-rainbow",
+      "windwp/nvim-autopairs",
+      "windwp/nvim-ts-autotag",
     }
   },
 
