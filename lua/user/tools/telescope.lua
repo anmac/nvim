@@ -8,20 +8,22 @@ local actions = require("telescope.actions")
 local fb_actions = telescope.extensions.file_browser.actions
 local project_actions = telescope.extensions.project.actions
 
+local icons = require("user.resources.misc").ui_v2
+
 telescope.setup({
   defaults = {
     sorting_strategy = "descending",
     selection_strategy = "reset",
     scroll_strategy = "cycle",
     layout_strategy = "horizontal",
-    prompt_prefix = " ",
-    selection_caret = " ",
+    prompt_prefix = icons.Prompt .. " ",
+    selection_caret = icons.Selection,
     initial_mode = "insert",
     border = true,
     path_display = { "smart" },
     cache_picker = false,
     history = {
-      path = "~/.local/share/nvim/databases/telescope_history.sqlite3",
+      path = "~/.local/share/nvim/telescope_history",
       limit = 100,
     },
     file_ignore_patterns = {
