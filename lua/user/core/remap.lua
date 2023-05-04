@@ -70,7 +70,7 @@ keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
 
 -- Greatest remaps ever
-keymap("x", "<leader>p", "\"_dp", opts)
+keymap("x", "<leader>p", "\"_dhp", opts)
 keymap({ "n", "x" }, "<leader>d", "\"_d", opts)
 
 -- Select all
