@@ -1,3 +1,6 @@
+local f = require("user.resources.misc").fillchars
+local l = require("user.resources.misc").listchars
+
 local options = {
   -- 2 movin around, searching and patterns
   incsearch = true,
@@ -8,11 +11,24 @@ local options = {
   scrolloff = 5,
   wrap = false,
   sidescrolloff = 5,
-  fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]],
+  fillchars = {
+    eob = f.EndOfBlock,
+    fold = f.FoldSep,
+    foldopen = f.FoldOpen,
+    foldsep = f.FoldSep,
+    foldclose = f.FoldClose,
+  },
   cmdheight = 1,
   list = true,
-  -- listchars = [[eol:↲,tab:··,lead:·,leadmultispace:∙,space: ,multispace: ,trail: ]],
-  listchars = [[eol:↲,tab:  ,lead: ,leadmultispace: ,space: ,multispace: ,trail: ]],
+  listchars = {
+    eol = l.EndOfLine,
+    tab = l.Tab,
+    space = l.None,
+    multispace = l.None,
+    lead = l.None,
+    leadmultispace = l.None,
+    trail = l.Dot,
+  },
   number = true,
   relativenumber = true,
   numberwidth = 5,
@@ -93,6 +109,5 @@ end
 vim.opt.shortmess:append("c")
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
--- vim.opt.formatoptions:remove("cro")
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

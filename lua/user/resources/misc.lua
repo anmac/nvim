@@ -94,5 +94,12 @@ return {
     FoldOpen = "",
     FoldSep = " ",
     FoldClose = "",
+    None = " ",
+  },
+  listchars = {
+    EndOfLine = "↲",
+    Dot = "∙",
+    Tab = "∙∙",
+    None = " ",
   },
 }
