@@ -60,6 +60,7 @@ local plugins = {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufReadPost", "BufNewFile" },
   },
+  { "NvChad/nvim-colorizer.lua" },
 
   -- Git
   {
