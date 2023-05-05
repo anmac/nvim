@@ -2,6 +2,9 @@
 local keymap = vim.keymap.set
 -- Silent keymap option
 local opts = { noremap = true, silent = true }
+local function dopts(description)
+  return { noremap = true, silent = true, desc = description }
+end
 
 -- Remap space as leader key
 vim.g.mapleader = " "
@@ -18,9 +21,9 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Write/Save, Quit and Quit without save
-keymap("n", "<leader>w", ":w<CR>", opts)
-keymap("n", "<leader>q", ":q<CR>", opts)
-keymap("n", "<leader>Q", ":q!<CR>", opts)
+keymap("n", "<leader>w", ":w<CR>", dopts("Save"))
+keymap("n", "<leader>q", ":q<CR>", dopts("Quit"))
+keymap("n", "<leader>Q", ":q!<CR>", dopts("Quit no save"))
 
 -- Move around in Insert Mode with hjkl
 keymap("i", "<C-h>", "<Left>", opts)
@@ -49,14 +52,12 @@ keymap("n", "<M-Right>", ":vertical resize +2<CR>", opts)
 -- Navigate and delete buffers
 keymap("n", "<Tab>", ":bnext<CR>", opts)
 keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
-keymap("n", "<leader>bd", ":lua require('mini.bufremove').delete(n, false)<CR>", opts)
-keymap("n", "<leader>bD", ":lua require('mini.bufremove').delete(n, true)<CR>", opts)
 
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv=gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv=gv", opts)
-keymap("n", "<leader>j", ":move .+1<CR>==", opts)
-keymap("n", "<leader>k", ":move .-2<CR>==", opts)
+keymap("n", "<leader>j", ":move .+1<CR>==", dopts("Move text"))
+keymap("n", "<leader>k", ":move .-2<CR>==", dopts("Move text"))
 
 -- Stay in "Indent Mode"
 keymap("x", "<", "<gv", opts)
@@ -70,12 +71,12 @@ keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
 
 -- Greatest remaps ever
-keymap("x", "<leader>p", "\"_dhp", opts)
-keymap({ "n", "x" }, "<leader>d", "\"_d", opts)
+keymap("x", "<leader>p", "\"_dhp", dopts("Paste text"))
+keymap({ "n", "x" }, "<leader>d", "\"_d", dopts("Delete text"))
 
 -- Select all
 keymap("n", "<C-a>", "ggVG", opts)
 
 -- Nvim-tree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", dopts("File Explorer"))
 
