@@ -61,6 +61,12 @@ local plugins = {
     event = { "BufReadPost", "BufNewFile" },
   },
 
+  -- Git
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+  },
+
   -- Tools: Telescope, Whichkey
   {
     "nvim-telescope/telescope.nvim",
@@ -76,7 +82,7 @@ local plugins = {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-  }
+  },
 }
 
 local opts = {
