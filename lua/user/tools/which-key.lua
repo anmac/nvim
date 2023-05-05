@@ -79,6 +79,7 @@ local mappings = {
     M = { "<cmd>Telescope man_pages<CR>", "Man Pages" },
     r = { "<cmd>Telescope oldfiles<CR>", "Recent Files" },
     R = { "<cmd>Telescope registers<CR>", "Registers" },
+    t = { "<cmd>TodoTelescope<CR>", "Todos" },
     x = { "<cmd>Telescope commands<CR>", "Commands" },
     z = { "<cmd>Telescope command_history<CR>", "Command History" },
   },
