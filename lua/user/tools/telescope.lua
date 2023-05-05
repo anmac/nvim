@@ -96,10 +96,6 @@ telescope.setup({
     },
   },
   pickers = {
-    find_files = {
-      theme = "dropdown",
-      previewer = false,
-    },
     grep_string = {
       grep_open_files = true,
       theme = "ivy",
