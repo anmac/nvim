@@ -66,7 +66,7 @@ local options = {
   foldmethod = "manual",
 
   -- 16 mapping
-  timeoutlen = 500,
+  timeoutlen = 100,
 
   -- 17 reading and writing files
   writebackup = true,
