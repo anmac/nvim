@@ -52,7 +52,7 @@ treesitter_config.setup({
   },
   rainbow = {
     enable = true,
-    disable = {},
+    disable = { "html" },
     extended_mode = false,
   },
 })
