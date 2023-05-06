@@ -84,7 +84,7 @@ local plugins = {
     event = { "BufReadPre", "BufNewFile" },
   },
 
-  -- Tools: Telescope, Whichkey, TODO-comments
+  -- Tools: Telescope, nvim-spectre, Whichkey, TODO-comments
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
@@ -96,6 +96,7 @@ local plugins = {
       { "nvim-telescope/telescope-project.nvim" },
     },
   },
+  { "nvim-pack/nvim-spectre" },
   {
     "folke/which-key.nvim",
     event = "VeryLazy",

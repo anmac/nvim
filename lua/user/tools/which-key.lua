@@ -126,6 +126,12 @@ local mappings = {
     v = { "<cmd>vsplit<CR>", "VSplit" },
   },
 
+  s = {
+    name = "Search",
+    r = { "<cmd>lua require('spectre').open()<CR>", "Replace in files (Spectre)" },
+    c = { "<cmd>lua require('spectre').open_file_search()<CR>", "Search on current file" },
+  },
+
   T = {
     name = "Treesitter",
     h = { "<cmd>TSHighlightCapturesUnderCursor<CR>", "Highlight" },
