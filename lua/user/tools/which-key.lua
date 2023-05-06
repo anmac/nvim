@@ -103,6 +103,23 @@ local mappings = {
     u = { "<cmd>Gitsigns undo_stage_hunk<CR>", "Undo Stage Hunk" },
   },
 
+  L = {
+    name = "Lazy",
+    b = { "<cmd>Lazy build<CR>", "Build"},
+    c = { "<cmd>Lazy check<CR>", "Check"},
+    C = { "<cmd>Lazy clean<CR>", "Clean"},
+    d = { "<cmd>Lazy debug<CR>", "Debug"},
+    h = { "<cmd>Lazy home<CR>", "Home"},
+    H = { "<cmd>Lazy help<CR>", "Help"},
+    i = { "<cmd>Lazy install<CR>", "Install"},
+    l = { "<cmd>Lazy load<CR>", "Load"},
+    L = { "<cmd>Lazy log<CR>", "Log"},
+    p = { "<cmd>Lazy profile<CR>", "Profile"},
+    r = { "<cmd>Lazy restore<CR>", "Restore"},
+    s = { "<cmd>Lazy sync<CR>", "Sync"},
+    u = { "<cmd>Lazy update<CR>", "Update"},
+  },
+
   n = {
     name = "Split",
     s = { "<cmd>split<CR>", "HSplit" },
