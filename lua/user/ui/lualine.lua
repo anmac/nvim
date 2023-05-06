@@ -15,12 +15,10 @@ local branch_icon = git.file_explorer.Branch
 local status = git.statusline
 local lsp = require("user.resources.diagnostics_icons")
 
-local hide_component_in_width = function()
-  return vim.fn.winwidth(0) > 50
-end
-
-local hide_location_in_width = function()
-  return vim.fn.winwidth(0) > 100
+local function hide_in_width(width)
+  return function()
+    return vim.fn.winwidth(0) > width
+  end
 end
 
 local branch = {
@@ -46,7 +44,7 @@ local diff = {
     removed = "DiagnosticError",
   },
   symbols = { added = status.Added, modified = status.Modified, removed = status.Removed },
-  cond = hide_component_in_width,
+  cond = hide_in_width(50),
 }
 
 local location = {
@@ -56,7 +54,7 @@ local location = {
     return string.format("Ln %s,Col %s", line, col)
   end,
   color = { fg = "#fff" },
-  cond = hide_location_in_width,
+  cond = hide_in_width(100),
 }
 
 local spaces = {
@@ -64,7 +62,7 @@ local spaces = {
     return "Spaces:" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
   end,
   color = { fg = "#fff" },
-  cond = hide_component_in_width,
+  cond = hide_in_width(80),
 }
 
 local eof = {
@@ -79,14 +77,14 @@ local eof = {
     end
   end,
   color = { fg = "#fff" },
-  cond = hide_component_in_width,
+  cond = hide_in_width(50),
 }
 
 local encoding = {
   "encoding",
   fmt = string.upper,
   color = { fg = "#fff" },
-  cond = hide_component_in_width,
+  cond = hide_in_width(80),
 }
 
 local filetype = {
