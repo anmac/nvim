@@ -14,7 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
   -- Core plugins
   "nvim-lua/plenary.nvim",
-  "folke/neodev.nvim",
 
   -- Colorscheme
   {
@@ -24,7 +23,7 @@ local plugins = {
   },
 
   -- Treesitter
-  { 
+  {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
@@ -34,6 +33,19 @@ local plugins = {
       "windwp/nvim-autopairs",
       "windwp/nvim-ts-autotag",
     }
+  },
+
+  -- LSP
+  {
+    "neovim/nvim-lspconfig",
+    branch = "master",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
+      { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
+      { "williamboman/mason.nvim", cmd = "Mason", build = ":MasonUpdate" },
+      { "williamboman/mason-lspconfig.nvim" },
+    },
   },
 
   -- UI
@@ -110,6 +122,7 @@ local plugins = {
 
 local opts = {
   defaults = {
+    lazy = true,
     version = "*",
   },
   ui = {
