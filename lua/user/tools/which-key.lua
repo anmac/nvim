@@ -62,6 +62,8 @@ local mappings = {
     D = { "<cmd>lua require('mini.bufremove').delete(n, true)<CR>", "Force delete" },
   },
 
+  c = { name = "Code" },
+
   f = {
     name = "Find",
     c = { "<cmd>Telescope colorscheme<CR>", "Colorscheme" },
