@@ -132,6 +132,7 @@ local mappings = {
     name = "Search",
     r = { "<cmd>lua require('spectre').open()<CR>", "Replace in files (Spectre)" },
     c = { "<cmd>lua require('spectre').open_file_search()<CR>", "Search on current file" },
+    d = { "<cmd>Trouble<CR>", "Trouble Diagnostics" },
   },
 
   T = {
