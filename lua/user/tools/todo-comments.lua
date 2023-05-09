@@ -4,7 +4,7 @@ if not status_ok then
   return
 end
 
-local i = require("user.resources.misc").ui_v2
+local i = require("user.resources.misc_icons").ui_v2
 
 todo_comments.setup({
   signs = true,

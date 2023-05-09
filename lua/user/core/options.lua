@@ -1,5 +1,5 @@
-local f = require("user.resources.misc").fillchars
-local l = require("user.resources.misc").listchars
+local f = require("user.resources.misc_icons").fillchars
+local l = require("user.resources.misc_icons").listchars
 
 local options = {
   -- 2 movin around, searching and patterns

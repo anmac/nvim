@@ -8,7 +8,7 @@ local actions = require("telescope.actions")
 local fb_actions = telescope.extensions.file_browser.actions
 local project_actions = telescope.extensions.project.actions
 
-local icons = require("user.resources.misc").ui_v2
+local icons = require("user.resources.misc_icons").ui_v2
 
 telescope.setup({
   defaults = {
