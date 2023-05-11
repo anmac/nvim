@@ -29,6 +29,7 @@ return {
   Snippet = " ",
   String = " ",
   Struct = " ",
+  Tabnine = "⌬ ",
   Text = " ",
   TypeParameter = " ",
   Unit = " ",
