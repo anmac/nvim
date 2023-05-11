@@ -32,6 +32,17 @@ treesitter_config.setup({
       node_decremental = "<BS>",
     },
   },
+  textobjects = {
+    swap = {
+      enable = true,
+      swap_next = {
+        ["<leader>a"] = "@parameter.inner",
+      },
+      swap_previous = {
+        ["<leader>A"] = "@parameter.inner",
+      },
+    },
+  },
   playground = {
     enable = true,
     disable = {},
