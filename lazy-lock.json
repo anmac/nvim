@@ -30,6 +30,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "986875b7364095d6535e28bd4aac3a9357e91bbe" },
   "playground": { "branch": "master", "commit": "2b81a018a49f8e476341dfcb228b7b808baba68b" },
   "plenary.nvim": { "branch": "master", "commit": "253d34830709d690f013daf2853a9d21ad7accab" },
+  "tabnine-nvim": { "branch": "master", "commit": "85a320922ac8e331f8061cae3ddab4524c049554" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "4054a5d0ab85475bf75df00cf10754d2e54b5532" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "580b6c48651cabb63455e97d7e131ed557b8c7e2" },
   "telescope-media-files.nvim": { "branch": "master", "commit": "0826c7a730bc4d36068f7c85cf4c5b3fd9fb570a" },

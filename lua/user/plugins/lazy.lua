@@ -67,6 +67,9 @@ local plugins = {
     },
   },
 
+  -- AI
+  { "codota/tabnine-nvim", build = "./dl_binaries.sh" },
+
   -- UI
   {
     "nvim-tree/nvim-tree.lua",
