@@ -15,6 +15,8 @@ local branch_icon = git.file_explorer.Branch
 local status = git.statusline
 local lsp = require("user.resources.diagnostics_icons")
 
+vim.api.nvim_set_hl(0, "SLTabnine", { fg = "#cb43f0" })
+
 local function hide_in_width(width)
   return function()
     return vim.fn.winwidth(0) > width
@@ -104,6 +106,20 @@ local filetype = {
   color = { fg = "#fff" },
 }
 
+local tabnine = {
+  "tabnine",
+  fmt = function(str)
+    local parts = vim.split(str, " ")
+    local win_col = vim.o.columns
+    if win_col > 100 then
+      return "%#SLTabnine#" .. parts[1] .. " %* " .. parts[2] .. " " .. parts[3]
+    else
+      return "%#SLTabnine#" .. parts[1]
+    end
+  end,
+  cond = hide_in_col(85),
+}
+
 lualine.setup({
   options = {
     icons_enabled = true,
@@ -127,7 +143,7 @@ lualine.setup({
     lualine_a = { "mode" },
     lualine_b = { branch },
     lualine_c = { diagnostics, diff },
-    lualine_x = { location, spaces, eof, encoding, filetype },
+    lualine_x = { tabnine, location, spaces, eof, encoding, filetype },
     lualine_y = {},
     lualine_z = { "progress" },
   },
