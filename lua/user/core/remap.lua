@@ -6,6 +6,9 @@ local function dopts(description)
   return { noremap = true, silent = true, desc = description }
 end
 
+-- Functions
+local f = require("user.resources.functions")
+
 -- Remap space as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -22,7 +25,7 @@ vim.g.maplocalleader = " "
 
 -- Write/Save, Quit and Quit without save
 keymap("n", "<leader>w", ":w<CR>", dopts("Save"))
-keymap("n", "<leader>q", ":q<CR>", dopts("Quit"))
+keymap("n", "<leader>q", function() f.smart_quit() end, dopts("Quit"))
 keymap("n", "<leader>Q", ":q!<CR>", dopts("Quit no save"))
 
 -- Move around in Insert Mode with hjkl
@@ -76,6 +79,9 @@ keymap({ "n", "x" }, "<leader>d", "\"_d", dopts("Delete text"))
 
 -- Select all
 keymap("n", "<C-a>", "ggVG", opts)
+
+-- Trim whitespaces
+keymap("n", "<C-M-l>", function() f.trim_trailing_whitespace() end, dopts("Trim whitespaces"))
 
 -- Nvim-tree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", dopts("File Explorer"))
