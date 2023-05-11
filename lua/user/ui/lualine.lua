@@ -21,6 +21,12 @@ local function hide_in_width(width)
   end
 end
 
+local function hide_in_col(col)
+  return function()
+    return vim.o.columns > col
+  end
+end
+
 local branch = {
   "branch",
   icon = { branch_icon, color = { fg = "#d16969", bg = "" } },
@@ -44,7 +50,7 @@ local diff = {
     removed = "DiagnosticError",
   },
   symbols = { added = status.Added, modified = status.Modified, removed = status.Removed },
-  cond = hide_in_width(50),
+  cond = hide_in_col(50),
 }
 
 local location = {
@@ -54,7 +60,7 @@ local location = {
     return string.format("Ln %s,Col %s", line, col)
   end,
   color = { fg = "#fff" },
-  cond = hide_in_width(100),
+  cond = hide_in_col(100),
 }
 
 local spaces = {
@@ -62,7 +68,7 @@ local spaces = {
     return "Spaces:" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
   end,
   color = { fg = "#fff" },
-  cond = hide_in_width(80),
+  cond = hide_in_col(80),
 }
 
 local eof = {
@@ -77,14 +83,14 @@ local eof = {
     end
   end,
   color = { fg = "#fff" },
-  cond = hide_in_width(50),
+  cond = hide_in_col(50),
 }
 
 local encoding = {
   "encoding",
   fmt = string.upper,
   color = { fg = "#fff" },
-  cond = hide_in_width(80),
+  cond = hide_in_col(80),
 }
 
 local filetype = {
