@@ -66,11 +66,17 @@ cmp.setup({
     end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
-    { name = "luasnip" },
-    { name = "nvim_lsp" },
-    { name = "buffer", keyword_length = 2 },
+    {
+      name = "nvim_lsp",
+      priority = 5,
+      entry_filter = function(entry, _)
+        return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()] ~= "Snippet"
+      end,
+    },
+    { name = "luasnip", priority = 3 },
+    { name = "buffer", priority = 2, keyword_length = 2 },
     { name = "path" },
-  }, { { name = "buffer" } }),
+  }),
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
@@ -79,7 +85,7 @@ cmp.setup({
       vim_item.kind = icons[vim_item.kind] or ""
       -- Abbr
       local trim = function(text)
-        local max = 36
+        local max = 32
         if text and text:len() > max then
           text = text:sub(1, max) .. "..."
         end
