@@ -11,9 +11,16 @@ if not status_mason_ok then
 end
 local servers = mason_lspconfig.get_installed_servers()
 
+local status_cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not status_cmp_nvim_lsp_ok then
+  vim.notify("cmp_nvim_lsp capabilities plugin failed!")
+  return
+end
+local capabilities = cmp_nvim_lsp.default_capabilities()
+
 for _, server in ipairs(servers) do
   local settings_status_ok, serverSettings = pcall(require, "user.lsp.settings." .. server)
-  local opts = {}
+  local opts = { capabilities = capabilities }
 
   if settings_status_ok then
     opts["settings"] = serverSettings
