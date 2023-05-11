@@ -135,3 +135,19 @@ cmp.setup.cmdline(":", {
       },
     })
 })
+
+local tabnine_status_ok, tabnine = pcall(require, "tabnine")
+if not tabnine_status_ok then
+  vim.notify("tabnine plugin failed!")
+  return
+end
+
+tabnine.setup({
+  disable_auto_comment = false,
+  accept_keymap = "<Tab>",
+  dismiss_keymap = "<C-]>",
+  debounce_ms = 800,
+  suggestion_color = { gui = "#808080", cterm = 244 },
+  exclude_filetypes = { "TelescopePrompt" },
+  log_file_path = nil,
+})
