@@ -13,7 +13,7 @@ dressing.setup({
     start_in_insert = true,
     anchor = "SW",
     border = "rounded",
-    relative = "cursor",
+    relative = "win",
     prefer_width = 0.6,
     width = nil,
     max_width = { 140, 0.9 },
