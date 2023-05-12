@@ -65,6 +65,7 @@ local plugins = {
         build = "make install_jsregexp",
         dependencies = { "rafamadriz/friendly-snippets" },
       },
+      "ray-x/cmp-treesitter",
     },
   },
 
