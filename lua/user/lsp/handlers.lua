@@ -29,6 +29,7 @@ for _, server in ipairs(servers) do
   lspconfig[server].setup(opts)
 end
 
+vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { fg = "#9e9e9e" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
