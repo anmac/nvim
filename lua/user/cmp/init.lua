@@ -75,6 +75,7 @@ cmp.setup({
     },
     { name = "luasnip", priority = 3 },
     { name = "buffer", priority = 2, keyword_length = 2 },
+    { name = "treesitter", priority = 2 },
     { name = "path" },
   }),
   formatting = {
@@ -99,6 +100,7 @@ cmp.setup({
         buffer = "[Buffer]",
         path = "[Path]",
         cmdline = "[Cmdline]",
+        treesitter = "[Treesitter]",
       })[entry.source.name]
       return vim_item
     end
