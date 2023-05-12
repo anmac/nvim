@@ -120,7 +120,7 @@ local plugins = {
     event = { "BufReadPre", "BufNewFile" },
   },
 
-  -- Tools: Telescope, nvim-spectre, Whichkey, TODO-comments, Trouble
+  -- Tools: Telescope, nvim-spectre, Whichkey, TODO-comments, Trouble, vim-illuminate
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
@@ -146,6 +146,10 @@ local plugins = {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble" },
     event = "VeryLazy",
+  },
+  {
+    "RRethy/vim-illuminate",
+    event = { "BufReadPost", "BufNewFile" },
   },
 }
 
