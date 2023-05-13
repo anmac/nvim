@@ -31,7 +31,7 @@ local options = {
   },
   number = true,
   relativenumber = true,
-  numberwidth = 5,
+  numberwidth = 2,
   conceallevel = 0,
 
   -- 5 syntax, highlighting and spelling
@@ -82,7 +82,7 @@ local options = {
   foldmethod = "manual",
 
   -- 16 mapping
-  timeoutlen = 100,
+  timeoutlen = 300,
 
   -- 17 reading and writing files
   writebackup = true,
