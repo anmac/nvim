@@ -113,6 +113,14 @@ local plugins = {
       end
     end,
   },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+  },
 
   -- Git
   {
