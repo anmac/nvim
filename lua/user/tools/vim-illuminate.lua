@@ -43,3 +43,5 @@ illuminate.configure({
   under_cursor = true,
   min_count_to_highlight = 1,
 })
+
+illuminate.pause()
