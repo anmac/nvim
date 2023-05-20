@@ -14,7 +14,7 @@ noice.setup({
     },
   },
   messages = {
-    enabled = true,
+    enabled = false,
   },
   popupmenu = {
     enabled = true,
