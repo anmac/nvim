@@ -33,6 +33,7 @@ local plugins = {
       "mrjones2014/nvim-ts-rainbow",
       "windwp/nvim-autopairs",
       "windwp/nvim-ts-autotag",
+      "JoosepAlviste/nvim-ts-context-commentstring",
     }
   },
 
@@ -56,7 +57,7 @@ local plugins = {
     event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
+      { "hrsh7th/cmp-buffer", lazy = true },
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
       "saadparwaiz1/cmp_luasnip",
@@ -128,7 +129,7 @@ local plugins = {
     event = { "BufReadPre", "BufNewFile" },
   },
 
-  -- Tools: Telescope, nvim-spectre, Whichkey, TODO-comments, Trouble, vim-illuminate
+  -- Tools: Telescope, nvim-spectre, Whichkey, TODO-comments, Trouble, vim-illuminate, Comment
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
@@ -158,6 +159,10 @@ local plugins = {
   {
     "RRethy/vim-illuminate",
     event = { "BufReadPost", "BufNewFile" },
+  },
+  {
+    "numToStr/Comment.nvim",
+    event = "VeryLazy",
   },
 }
 
