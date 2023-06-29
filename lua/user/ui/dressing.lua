@@ -1,10 +1,4 @@
-local status_ok, dressing = pcall(require, "dressing")
-if not status_ok then
-  vim.notify("dressing failed!")
-  return
-end
-
-dressing.setup({
+M = {
   input = {
     enabled = true,
     default_prompt = "Input:",
@@ -13,11 +7,11 @@ dressing.setup({
     start_in_insert = true,
     anchor = "SW",
     border = "rounded",
-    relative = "win",
+    relative = "editor",
     prefer_width = 0.6,
     width = nil,
-    max_width = { 140, 0.9 },
-    min_width = { 35, 0.35 },
+    max_width = { 0.3 },
+    min_width = { 15, 0.25 },
     buf_options = {},
     win_options = {
       winblend = 0,
@@ -91,4 +85,6 @@ dressing.setup({
       },
     },
   },
-})
+}
+
+return M
