@@ -1,10 +1,4 @@
-local status_ok, indent_blankline = pcall(require, "indent_blankline")
-if not status_ok then
-  vim.notify("Indent blankline failed!")
-  return
-end
-
-indent_blankline.setup({
+M = {
   char = "▏",
   char_list_blankline = {},
   char_highlight_list = {},
@@ -49,4 +43,6 @@ indent_blankline.setup({
     "rainbowcol6",
     "rainbowcol7",
   },
-})
+}
+
+return M
