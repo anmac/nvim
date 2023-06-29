@@ -1,10 +1,4 @@
-local status_ok, noice = pcall(require, "noice")
-if not status_ok then
-  vim.notify("noice plugin failed!")
-  return
-end
-
-noice.setup({
+M = {
   cmdline = {
     enabled = true,
     view = "cmdline_popup",
@@ -29,6 +23,7 @@ noice.setup({
       opts = { enter = true, format = "details" },
       filter = {
         any = {
+          { event = "notify" },
           { error = true },
           { warning = true },
           { event = "msg_show", kind = { "" } },
@@ -102,7 +97,7 @@ noice.setup({
     bottom_search = true,
     command_palette = true,
     long_message_to_split = false,
-    inc_rename = false,
+    inc_rename = true,
     lsp_doc_border = true,
   },
   routes = {
@@ -121,4 +116,6 @@ noice.setup({
       opts = { skip = true },
     },
   },
-})
+}
+
+return M
