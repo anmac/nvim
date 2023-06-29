@@ -1,12 +1,6 @@
-local status_ok, gitsigns = pcall(require, "gitsigns")
-if not status_ok then
-  vim.notify("gitsigns failed!")
-  return
-end
-
 local git = require("user.resources.git_icons").signcolumn
 
-gitsigns.setup({
+M = {
   signs = {
     add = { text = git.Add },
     change = { text = git.Change },
@@ -15,6 +9,11 @@ gitsigns.setup({
     changedelete = { text = git.Changedelete },
     untracked = { text = git.Untracked },
   },
+  watch_gitdir = {
+    interval = 100,
+    follow_files = true,
+  },
+  attach_to_untracked = true,
   current_line_blame = true,
   current_line_blame_opts = {
     virt_text = true,
@@ -30,4 +29,6 @@ gitsigns.setup({
     row = 0,
     col = 1,
   },
-})
+}
+
+return M
