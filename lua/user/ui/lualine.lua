@@ -1,12 +1,6 @@
-local status_ok, lualine = pcall(require, "lualine")
-if not status_ok then
-  vim.notify("lualine failed!")
-  return
-end
-
 local status_theme_ok, theme = pcall(require, "lualine.themes.auto")
 if not status_theme_ok then
-  vim.notify("lualine theme auto failed!")
+  vim.notify("Lualine Theme Auto Failed!")
   return
 end
 
@@ -120,7 +114,7 @@ local tabnine = {
   cond = hide_in_col(85),
 }
 
-lualine.setup({
+M = {
   options = {
     icons_enabled = true,
     theme = theme,
@@ -159,4 +153,6 @@ lualine.setup({
   winbar = {},
   inactive_winbar = {},
   extensions = { "fugitive", "fzf", "lazy", "man", "nvim-dap-ui", "toggleterm" },
-})
+}
+
+return M
