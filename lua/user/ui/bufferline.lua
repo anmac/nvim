@@ -1,10 +1,4 @@
-local status_ok, bufferline = pcall(require, "bufferline")
-if not status_ok then
-  vim.notify("bufferline failed!")
-  return
-end
-
-bufferline.setup({
+M = {
   options = {
     mode = "buffers",
     themable = true,
@@ -21,7 +15,7 @@ bufferline.setup({
       return "" .. count .. ""
     end,
     offsets = {
-      { filetype = "NvimTree", text = "File Explorer", highlight = "Directory", separator = true, padding = 0 },
+      { filetype = "NvimTree", text = " File Explorer", highlight = "Directory", separator = true, padding = 0 },
     },
     color_icons = true,
     show_buffer_icons = true,
@@ -36,4 +30,6 @@ bufferline.setup({
     },
     sort_by = "insert_at_end",
   },
-})
+}
+
+return M
