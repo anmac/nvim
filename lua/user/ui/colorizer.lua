@@ -1,10 +1,4 @@
-local status_ok, colorizer = pcall(require, "colorizer")
-if not status_ok then
-  vim.notify("colorizer loading failed!")
-  return
-end
-
-colorizer.setup({
+M = {
   filetypes = { "*" },
   user_default_options = {
     RGB = true,
@@ -21,4 +15,6 @@ colorizer.setup({
     sass = { enable = true, parsers = { css } },
     virtualtext = "■",
   },
-})
+}
+
+return M
