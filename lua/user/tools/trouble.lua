@@ -1,10 +1,4 @@
-local status_ok, trouble = pcall(require, "trouble")
-if not status_ok then
-  vim.notify("trouble failed!")
-  return
-end
-
-trouble.setup({
+M = {
   position = "bottom",
   height = 10,
   icons = true,
@@ -46,4 +40,6 @@ trouble.setup({
     other = ""
   },
   use_diagnostic_signs = true,
-})
+}
+
+return M
