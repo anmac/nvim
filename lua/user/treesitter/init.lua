@@ -1,2 +1,2 @@
-require("user.treesitter.nvim-treesitter")
-require("user.treesitter.nvim-autopairs")
+-- require("user.treesitter.nvim-treesitter")
+-- require("user.treesitter.nvim-autopairs")

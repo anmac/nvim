@@ -5,10 +5,36 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   dependencies = {
     "nvim-treesitter/playground",
-    "nvim-treesitter/nvim-treesitter-textobjects",
+    {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      init = function()
+        load_textobjects = true
+      end,
+    },
     "mrjones2014/nvim-ts-rainbow",
-    "windwp/nvim-autopairs",
+    {
+      "windwp/nvim-autopairs",
+      opts = function() return require("user.treesitter.nvim-autopairs") end,
+      config = function(_, opts)
+        local status_ok, autopairs = pcall(require, "nvim-autopairs")
+        if not status_ok then
+          vim.notify("Nvim-Autopairs Plugin Failed!")
+          return
+        end
+        autopairs.setup(opts)
+      end,
+    },
     "windwp/nvim-ts-autotag",
-    "JoosepAlviste/nvim-ts-context-commentstring",
-  }
+    { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+  },
+  cmd = { "TSUpdateSync" },
+  opts = function() return require("user.treesitter.nvim-treesitter") end,
+  config = function(_, opts)
+    local status_config_ok, treesitter_config = pcall(require, "nvim-treesitter.configs")
+    if not status_config_ok then
+      vim.notify("Nvim-Treesitter Plugin Failed!")
+      return
+    end
+    treesitter_config.setup(opts)
+  end,
 }

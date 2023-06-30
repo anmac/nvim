@@ -1,10 +1,4 @@
-local status_ok, autopairs = pcall(require, "nvim-autopairs")
-if not status_ok then
-  vim.notify("nvim-autopairs failed!")
-  return
-end
-
-autopairs.setup({
+M = {
   ts_config = {
     lua = { "string", "source" },
     javascript = { "string", "template_string" },
@@ -25,4 +19,6 @@ autopairs.setup({
   map_bs = true,
   map_c_h = false,
   map_c_w = false,
-})
+}
+
+return M

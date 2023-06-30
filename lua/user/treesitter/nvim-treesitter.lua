@@ -1,17 +1,4 @@
-local status_config_ok, treesitter_config = pcall(require, "nvim-treesitter.configs")
-if not status_config_ok then
-  vim.notify("nvim-treesitter.configs failed!")
-  return
-end
-
-local status_install_ok, treesitter_install = pcall(require, "nvim-treesitter.install")
-if not status_install_ok then
-  vim.notify("nvim-treesitter.install failed!")
-  return
-end
-treesitter_install.prefer_git = true
-
-treesitter_config.setup({
+M = {
   ensure_installed = "all",
   sync_install = false,
   auto_install = true,
@@ -70,4 +57,6 @@ treesitter_config.setup({
     enable = true,
     enable_autocmd = false,
   },
-})
+}
+
+return M
