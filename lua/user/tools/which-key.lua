@@ -1,10 +1,10 @@
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
-  vim.notify("which-key failed!")
+  vim.notify("Which-Key Plugin Failed!")
   return
 end
 
-local setup = {
+M = {
   plugins = {
     marks = true,
     registers = true,
@@ -58,8 +58,8 @@ local setup = {
 local mappings = {
   b = {
     name = "Buffer",
-    d = { "<cmd>lua require('mini.bufremove').delete(n, false)<CR>", "Delete buffer" },
-    D = { "<cmd>lua require('mini.bufremove').delete(n, true)<CR>", "Force delete" },
+    d = { "<cmd>lua require('mini.bufremove').delete(0, false)<CR>", "Delete buffer" },
+    D = { "<cmd>lua require('mini.bufremove').delete(0, true)<CR>", "Force delete" },
   },
 
   c = { name = "Code" },
@@ -136,6 +136,14 @@ local mappings = {
     d = { "<cmd>Trouble<CR>", "Trouble Diagnostics" },
   },
 
+  t = {
+    name = "Todo",
+    t = { "<cmd>TodoTelescope<CR>", "Search through all project todos with Telescope" },
+    T = { "<cmd>TodoTrouble<CR>", "List all project todos in trouble" },
+    q = { "<cmd>TodoQuickFix<CR>", "Uses quickfix list to show all todos" },
+    l = { "<cmd>TodoLocList<CR>", "Uses location list to show all todos" },
+  },
+
   T = {
     name = "Treesitter",
     h = { "<cmd>TSHighlightCapturesUnderCursor<CR>", "Highlight" },
@@ -152,5 +160,6 @@ local opts = {
   nowait = true,
 }
 
-which_key.setup(setup)
 which_key.register(mappings, opts)
+
+return M
