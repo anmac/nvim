@@ -1,6 +1,6 @@
 local status_ok, telescope = pcall(require, "telescope")
 if not status_ok then
-  vim.notify("telescope failed!")
+  vim.notify("Telescope Plugin Failed!")
   return
 end
 
@@ -10,7 +10,7 @@ local project_actions = telescope.extensions.project.actions
 
 local icons = require("user.resources.misc_icons").ui_v2
 
-telescope.setup({
+M = {
   defaults = {
     sorting_strategy = "descending",
     selection_strategy = "reset",
@@ -189,10 +189,6 @@ telescope.setup({
       theme = "dropdown",
     },
   },
-})
+}
 
-telescope.load_extension("fzf")
-telescope.load_extension("media_files")
-telescope.load_extension("file_browser")
-telescope.load_extension("project")
-telescope.load_extension("notify")
+return M
