@@ -1,16 +1,14 @@
-local status_ok, illuminate = pcall(require, "illuminate")
-if not status_ok then
-  vim.notify("illuminate plugin failed!")
-  return
-end
-
-illuminate.configure({
+M = {
   providers = {
     "lsp",
     "treesitter",
     "regex",
   },
-  delay = 90,
+  delay = 200,
+  large_file_cutoff = 2000,
+  large_file_overrides = {
+    providers = { "lsp" },
+  },
   filetypes_denylist = {
     "alpha",
     "dapui_scopes",
@@ -42,6 +40,6 @@ illuminate.configure({
   modes_denylist = { "nt", "v", "vs", "V", "Vs", "CTRL-V", "CTRL-Vs", "CTRL-S", "R", "c", "!", "t", "x" },
   under_cursor = true,
   min_count_to_highlight = 1,
-})
+}
 
-illuminate.pause()
+return M
