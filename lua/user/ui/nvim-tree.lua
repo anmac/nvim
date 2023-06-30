@@ -1,27 +1,18 @@
-local status_nvim_tree_ok, nvim_tree = pcall(require, "nvim-tree")
-if not status_nvim_tree_ok then
-  vim.notify("nvim-tree setup failed")
-  return
-end
-
-local status_lsp_file_operations_ok, lsp_file_operations = pcall(require, "lsp-file-operations")
-if not status_lsp_file_operations_ok then
-  vim.notify("lsp-file-operations failed")
-  return
-end
-lsp_file_operations.setup()
-
 local i = require("user.resources.documents_icons")
 local git = require("user.resources.git_icons").file_explorer
 
-nvim_tree.setup({
+M = {
   disable_netrw = true,
   hijack_cursor = true,
   hijack_unnamed_buffer_when_opening = true,
   reload_on_bufenter = true,
   select_prompts = true,
   view = {
-    preserve_window_proportions = true,
+    width = {
+      min = 35,
+      max = 45,
+    },
+    preserve_window_proportions = false,
   },
   renderer = {
     group_empty = true,
@@ -123,4 +114,6 @@ nvim_tree.setup({
       git = true,
     },
   },
-})
+}
+
+return M
