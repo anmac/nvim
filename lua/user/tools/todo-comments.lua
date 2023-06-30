@@ -1,12 +1,6 @@
-local status_ok, todo_comments = pcall(require, "todo-comments")
-if not status_ok then
-  vim.notify("todo-comments failed!")
-  return
-end
-
 local i = require("user.resources.misc_icons").ui_v2
 
-todo_comments.setup({
+M = {
   signs = true,
   sign_priority = 8,
   keywords = {
@@ -58,4 +52,6 @@ todo_comments.setup({
     },
     pattern = [[\b(KEYWORDS):]],
   },
-})
+}
+
+return M
