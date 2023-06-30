@@ -13,7 +13,7 @@ end
 require("luasnip.loaders.from_vscode").lazy_load()
 local icons = require("user.resources.kind_icons")
 
-cmp.setup({
+M = {
   enabled = function()
     local buftype = vim.api.nvim_buf_get_option(0, "buftype")
     local context = require("cmp.config.context")
@@ -112,7 +112,7 @@ cmp.setup({
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
-})
+}
 
 -- If you want insert `(` after select function or method item
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -143,3 +143,5 @@ cmp.setup.cmdline(":", {
       },
     })
 })
+
+return M

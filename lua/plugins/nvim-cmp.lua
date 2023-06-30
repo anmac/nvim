@@ -12,7 +12,15 @@ return {
       "L3MON4D3/LuaSnip",
       build = "make install_jsregexp",
       dependencies = { "rafamadriz/friendly-snippets" },
+      opts = {
+        history = true,
+        delete_check_events = "TextChanged",
+      },
     },
     "ray-x/cmp-treesitter",
   },
+  opts = function() return require("user.cmp") end,
+  config = function(_, opts)
+    require("cmp").setup(opts)
+  end,
 }
