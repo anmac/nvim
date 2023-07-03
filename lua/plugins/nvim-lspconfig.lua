@@ -8,4 +8,5 @@ return {
     { "williamboman/mason.nvim", cmd = "Mason", build = ":MasonUpdate" },
     { "williamboman/mason-lspconfig.nvim" },
   },
+  config = function() require("user.lsp") end,
 }
