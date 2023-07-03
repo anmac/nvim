@@ -36,6 +36,11 @@ return {
       vim.notify(colorscheme .. " colorscheme not found!")
       vim.cmd.colorscheme("habamax")
       vim.notify("Loading Default Colorscheme...")
+    else
+      -- vim.cmd([[highlight Comment guifg=#6d707c]])
+      vim.cmd([[highlight NonText guifg=#50545d]])
+      vim.cmd([[highlight LineNr guifg=#6d707c]])
+      vim.cmd([[highlight CursorLineNr guifg=#5eacd3]])
     end
   end,
 }
