@@ -56,6 +56,8 @@ M = {
 }
 
 local mappings = {
+  ["/"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", "Toggle current line (linewise)" },
+
   b = {
     name = "Buffer",
     d = { "<cmd>lua require('mini.bufremove').delete(0, false)<CR>", "Delete buffer" },
