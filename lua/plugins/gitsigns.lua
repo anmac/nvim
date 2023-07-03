@@ -9,5 +9,6 @@ return {
       return
     end
     gitsigns.setup(opts)
+    vim.cmd([[highlight GitSignsCurrentLineBlame guifg=#6d707c]])
   end,
 }
