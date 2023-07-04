@@ -95,5 +95,5 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 -- Close NvimTree when there is no any other buffer
 vim.api.nvim_create_autocmd({"QuitPre"}, {
-    callback = function() vim.cmd("NvimTreeClose") end,
+  callback = function() vim.cmd("NvimTreeClose") end,
 })
