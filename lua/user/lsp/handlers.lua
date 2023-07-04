@@ -20,7 +20,14 @@ local capabilities = cmp_nvim_lsp.default_capabilities()
 
 for _, server in ipairs(servers) do
   local settings_status_ok, serverSettings = pcall(require, "user.lsp.settings." .. server)
-  local opts = { capabilities = capabilities }
+  local opts = {
+    capabilities = capabilities,
+    on_attach = function (client,bufnr)
+      if client.server_capabilities["documentSymbolProvider"] then
+        require("nvim-navic").attach(client, bufnr)
+      end
+    end
+  }
 
   if settings_status_ok then
     opts["settings"] = serverSettings
