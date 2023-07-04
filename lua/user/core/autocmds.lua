@@ -97,3 +97,16 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 vim.api.nvim_create_autocmd({"QuitPre"}, {
   callback = function() vim.cmd("NvimTreeClose") end,
 })
+
+vim.api.nvim_create_autocmd({
+  "WinResized",
+  "BufWinEnter",
+  "CursorHold",
+  "InsertLeave",
+  "BufModifiedSet",
+}, {
+    group = augroup("barbecue_updater"),
+    callback = function()
+      require("barbecue.ui").update()
+    end,
+  })

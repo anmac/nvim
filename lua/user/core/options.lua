@@ -47,7 +47,7 @@ local options = {
   splitright = true,
 
   -- 7 multiple tab pages
-  showtabline = 2,
+  showtabline = 0,
 
   -- 8 terminal
   title = true,
@@ -91,7 +91,7 @@ local options = {
 
   -- 18 the swap file
   swapfile = false,
-  updatetime = 300,
+  updatetime = 200,
 
   -- 23 multi-byte characters
   encoding = "utf-8",
