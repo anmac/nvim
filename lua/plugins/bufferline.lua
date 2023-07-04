@@ -14,4 +14,5 @@ return {
     end
     bufferline.setup(opts)
   end,
+  cond = false,
 }
