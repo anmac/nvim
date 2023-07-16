@@ -18,7 +18,7 @@ local opts = {
   },
   ui = {
     border = "rounded",
-  }
+  },
 }
 
 require("user.core")
