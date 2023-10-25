@@ -12,6 +12,10 @@ end
 
 require("luasnip.loaders.from_vscode").lazy_load()
 local icons = require("user.resources.kind_icons")
+luasnip.filetype_extend("javascript", { "javascriptreact" })
+luasnip.filetype_extend("php", { "html" })
+luasnip.filetype_extend("jsp", { "html" })
+luasnip.filetype_extend("jsp", { "java" })
 
 M = {
   enabled = function()
@@ -19,7 +23,7 @@ M = {
     local context = require("cmp.config.context")
     if buftype == "prompt" then
       return false
-    elseif vim.api.nvim_get_mode().mode == 'c' then
+    elseif vim.api.nvim_get_mode().mode == "c" then
       return true
     elseif context.in_treesitter_capture("comment") or context.in_syntax_group("Comment") then
       return false
@@ -94,16 +98,18 @@ M = {
       end
       vim_item.abbr = trim(vim_item.abbr)
       -- Menu: Label and Source
-      vim_item.menu = label .. " " .. ({
-        luasnip = "[LuaSnip]",
-        nvim_lsp = "[LSP]",
-        buffer = "[Buffer]",
-        path = "[Path]",
-        cmdline = "[Cmdline]",
-        treesitter = "[Treesitter]",
-      })[entry.source.name]
+      vim_item.menu = label
+        .. " "
+        .. ({
+          luasnip = "[LuaSnip]",
+          nvim_lsp = "[LSP]",
+          buffer = "[Buffer]",
+          path = "[Path]",
+          cmdline = "[Cmdline]",
+          treesitter = "[Treesitter]",
+        })[entry.source.name]
       return vim_item
-    end
+    end,
   },
   view = {
     entries = { name = "custom", selection_order = "near_cursor" },
@@ -116,32 +122,29 @@ M = {
 
 -- If you want insert `(` after select function or method item
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on(
-  "confirm_done",
-  cmp_autopairs.on_confirm_done()
-)
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 -- `/` cmdline setup.
 cmp.setup.cmdline("/", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    { name = "buffer" }
-  }
+    { name = "buffer" },
+  },
 })
 
 -- `:` cmdline setup.
 cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = "path" }
+    { name = "path" },
   }, {
-      {
-        name = "cmdline",
-        option = {
-          ignore_cmds = { "Man", "!" }
-        },
+    {
+      name = "cmdline",
+      option = {
+        ignore_cmds = { "Man", "!" },
       },
-    })
+    },
+  }),
 })
 
 return M
