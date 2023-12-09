@@ -119,10 +119,6 @@ M = {
     disable = { "html" },
     extended_mode = false,
   },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
-  },
 }
 
 return M
