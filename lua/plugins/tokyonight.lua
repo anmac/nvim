@@ -41,6 +41,9 @@ return {
       vim.cmd([[highlight NonText guifg=#50545d]])
       vim.cmd([[highlight LineNr guifg=#6d707c]])
       vim.cmd([[highlight CursorLineNr guifg=#5eacd3]])
+      vim.cmd([[highlight GitSignsAdd guifg=#4fd6be]]) -- #627259
+      vim.cmd([[highlight GitSignsChange guifg=#467bf4]]) -- #485a86
+      vim.cmd([[highlight GitSignsDelete guifg=#ea2e4e]]) -- #b55a67
     end
   end,
 }
