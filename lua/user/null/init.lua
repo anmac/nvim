@@ -22,13 +22,32 @@ M = {
   on_attach = nil,
   on_init = nil,
   on_exit = nil,
-  root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git", ".idea", ".vscode"),
+  root_dir = require("null-ls.utils").root_pattern(
+    ".null-ls-root",
+    ".neoconf.json",
+    "Makefile",
+    ".git",
+    ".idea",
+    ".vscode"
+  ),
   sources = {
     -- Prettier -> html,css,js,ts,json,yaml,markdown...
-    formatting.prettierd,
+    formatting.prettierd.with({
+      extra_filetypes = { "dockerfile" },
+    }),
     -- Lua Formatting
     formatting.stylua.with({
-      extra_args = { "--indent-type", "Spaces", "--quote-style", "ForceDouble", "--indent-width", "2" }
+      extra_args = { "--indent-type", "Spaces", "--quote-style", "ForceDouble", "--indent-width", "2" },
+    }),
+    -- Java Formatting
+    formatting.google_java_format.with({
+      extra_filetypes = { "jsp" },
+    }),
+    -- XML Formatting
+    formatting.xmlformat,
+    -- Shell Formatting
+    formatting.shfmt.with({
+      extra_args = { "-i", "2", "-ci" },
     }),
   },
 }
