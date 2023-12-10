@@ -9,8 +9,8 @@ M = {
   max_height = function()
     return math.floor(vim.o.lines * 0.75)
   end,
-  render = "default",
-  stages = "fade_in_slide_out",
+  render = "compact",
+  stages = "static",
   timeout = 5000,
   top_down = true,
 }
