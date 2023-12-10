@@ -60,8 +60,8 @@ local mappings = {
 
   b = {
     name = "Buffer",
-    d = { "<cmd>lua require('mini.bufremove').delete(0, false)<CR>", "Delete buffer" },
-    D = { "<cmd>lua require('mini.bufremove').delete(0, true)<CR>", "Force delete" },
+    d = { "<cmd>lua require('mini.bufremove').delete(_, false)<CR>", "Delete buffer" },
+    D = { "<cmd>lua require('mini.bufremove').delete(_, true)<CR>", "Force delete" },
   },
 
   c = {
