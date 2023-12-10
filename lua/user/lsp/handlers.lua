@@ -18,22 +18,56 @@ if not status_cmp_nvim_lsp_ok then
 end
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
+local lsp_formatting = function(bufnr)
+  vim.lsp.buf.format({
+    filter = function(client)
+      return client.name == "null-ls"
+    end,
+    bufnr = bufnr or vim.api.nvim_get_current_buf(),
+    async = false,
+  })
+end
+
+local on_attach = function(client, bufnr)
+  if client.server_capabilities["documentSymbolProvider"] then
+    require("nvim-navic").attach(client, bufnr)
+  end
+  -- if you want to set up formatting on save, you can use this as a callback
+  -- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+  -- if client.supports_method("textDocument/formatting") then
+  --   vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+  --   vim.api.nvim_create_autocmd("BufWritePre", {
+  --     group = augroup,
+  --     buffer = bufnr,
+  --     callback = function()
+  --       lsp_formatting(bufnr)
+  --     end,
+  --   })
+  -- end
+  if client.name == "jdtls" then
+    vim.lsp.codelens.refresh()
+  end
+end
+
 for _, server in ipairs(servers) do
   local settings_status_ok, serverSettings = pcall(require, "user.lsp.settings." .. server)
   local opts = {
     capabilities = capabilities,
-    on_attach = function (client,bufnr)
-      if client.server_capabilities["documentSymbolProvider"] then
-        require("nvim-navic").attach(client, bufnr)
-      end
-    end
+    on_attach = on_attach,
   }
 
   if settings_status_ok then
-    opts["settings"] = serverSettings
+    if serverSettings["settings"] then
+      opts["settings"] = serverSettings["settings"]
+    end
+    if serverSettings["filetypes"] then
+      opts["filetypes"] = serverSettings["filetypes"]
+    end
   end
 
-  lspconfig[server].setup(opts)
+  if server ~= "jdtls" then
+    lspconfig[server].setup(opts)
+  end
 end
 
 vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { fg = "#9e9e9e" })
@@ -70,11 +104,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.keymap.set("n", "<leader>cs", vim.lsp.buf.signature_help, dopts("Signature help"))
     end
     if client.server_capabilities.documentFormattingProvider then
-      vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format({ async = true }) end, dopts("Format file"))
+      vim.keymap.set("n", "<leader>cf", function()
+        lsp_formatting()
+      end, dopts("Format file"))
     end
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, dopts("Prev diagnostic"))
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, dopts("Next diagnostic"))
-    vim.keymap.set("n", "gl", function() vim.diagnostic.open_float({ scope = "line" }) end, dopts("Open diagnostics float"))
+    vim.keymap.set("n", "gl", function()
+      vim.diagnostic.open_float({ scope = "line" })
+    end, dopts("Open diagnostics float"))
   end,
 })
 
@@ -112,3 +150,31 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
   border = "rounded",
 })
+
+local M = {}
+
+local format_on_save = vim.api.nvim_create_augroup("format_on_save", { clear = true })
+
+function M.toggle_format_on_save()
+  if vim.fn.exists("#format_on_save#BufWritePre") == 1 then
+    vim.api.nvim_clear_autocmds({ group = format_on_save })
+    vim.notify("Format on save Disabled")
+  else
+    vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+      group = format_on_save,
+      callback = function()
+        vim.lsp.buf.format({
+          filter = function(client)
+            return client.name == "null-ls"
+          end,
+          async = false,
+        })
+      end,
+    })
+    vim.notify("Format on save Enabled")
+  end
+end
+
+vim.cmd([[ command! LspToggleAutoFormat execute "lua require('user.lsp.handlers').toggle_format_on_save()" ]])
+
+return M
