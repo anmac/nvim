@@ -19,6 +19,7 @@ return {
       end
       scrollbar.setup()
       vim.cmd([[highlight GitSignsCurrentLineBlame guifg=#6d707c]])
+      vim.cmd([[highlight GitSignsChange guifg=#D0B172]])
     end,
   },
   { "tpope/vim-fugitive" },
