@@ -5,7 +5,7 @@ M = {
     title_pos = "center",
     insert_only = false,
     start_in_insert = true,
-    anchor = "SW",
+    -- anchor = "SW",
     border = "rounded",
     relative = "editor",
     prefer_width = 0.6,
@@ -64,7 +64,7 @@ M = {
       min_height = 10,
     },
     builtin = {
-      anchor = "NW",
+      -- anchor = "NW",
       border = "rounded",
       relative = "editor",
 
