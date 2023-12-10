@@ -64,7 +64,10 @@ local mappings = {
     D = { "<cmd>lua require('mini.bufremove').delete(0, true)<CR>", "Force delete" },
   },
 
-  c = { name = "Code" },
+  c = {
+    name = "Code",
+    F = { "<cmd>LspToggleAutoFormat<CR>", "Toggle Autoformat" },
+  },
 
   f = {
     name = "Find",
@@ -111,19 +114,19 @@ local mappings = {
 
   L = {
     name = "Lazy",
-    b = { "<cmd>Lazy build<CR>", "Build"},
-    c = { "<cmd>Lazy check<CR>", "Check"},
-    C = { "<cmd>Lazy clean<CR>", "Clean"},
-    d = { "<cmd>Lazy debug<CR>", "Debug"},
-    h = { "<cmd>Lazy home<CR>", "Home"},
-    H = { "<cmd>Lazy help<CR>", "Help"},
-    i = { "<cmd>Lazy install<CR>", "Install"},
-    l = { "<cmd>Lazy load<CR>", "Load"},
-    L = { "<cmd>Lazy log<CR>", "Log"},
-    p = { "<cmd>Lazy profile<CR>", "Profile"},
-    r = { "<cmd>Lazy restore<CR>", "Restore"},
-    s = { "<cmd>Lazy sync<CR>", "Sync"},
-    u = { "<cmd>Lazy update<CR>", "Update"},
+    b = { "<cmd>Lazy build<CR>", "Build" },
+    c = { "<cmd>Lazy check<CR>", "Check" },
+    C = { "<cmd>Lazy clean<CR>", "Clean" },
+    d = { "<cmd>Lazy debug<CR>", "Debug" },
+    h = { "<cmd>Lazy home<CR>", "Home" },
+    H = { "<cmd>Lazy help<CR>", "Help" },
+    i = { "<cmd>Lazy install<CR>", "Install" },
+    l = { "<cmd>Lazy load<CR>", "Load" },
+    L = { "<cmd>Lazy log<CR>", "Log" },
+    p = { "<cmd>Lazy profile<CR>", "Profile" },
+    r = { "<cmd>Lazy restore<CR>", "Restore" },
+    s = { "<cmd>Lazy sync<CR>", "Sync" },
+    u = { "<cmd>Lazy update<CR>", "Update" },
   },
 
   n = {
