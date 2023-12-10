@@ -2,6 +2,12 @@ local function augroup(name)
   return vim.api.nvim_create_augroup(name, { clear = true })
 end
 
+-- Check if we need to reload the file when it changed
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+  group = augroup("checktime"),
+  command = "checktime",
+})
+
 -- Highlight Yanked Text
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   group = augroup("highlight_yank"),
@@ -14,7 +20,9 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   group = augroup("resize_splits"),
   callback = function()
+    local current_tab = vim.fn.tabpagenr()
     vim.cmd("tabdo wincmd =")
+    vim.cmd("tabnext " .. current_tab)
   end,
 })
 
@@ -41,7 +49,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
   group = augroup("last_location"),
   pattern = { "*" },
   callback = function()
-    vim.api.nvim_exec('silent! normal! g`"zv', false)
+    vim.api.nvim_exec("silent! normal! g`\"zv", false)
   end,
 })
 
@@ -94,8 +102,10 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 -- Close NvimTree when there is no any other buffer
-vim.api.nvim_create_autocmd({"QuitPre"}, {
-  callback = function() vim.cmd("NvimTreeClose") end,
+vim.api.nvim_create_autocmd({ "QuitPre" }, {
+  callback = function()
+    vim.cmd("NvimTreeClose")
+  end,
 })
 
 vim.api.nvim_create_autocmd({
@@ -105,8 +115,8 @@ vim.api.nvim_create_autocmd({
   "InsertLeave",
   "BufModifiedSet",
 }, {
-    group = augroup("barbecue_updater"),
-    callback = function()
-      require("barbecue.ui").update()
-    end,
-  })
+  group = augroup("barbecue_updater"),
+  callback = function()
+    require("barbecue.ui").update()
+  end,
+})
