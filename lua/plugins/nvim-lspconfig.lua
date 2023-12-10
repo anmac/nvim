@@ -7,6 +7,9 @@ return {
     { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
     { "williamboman/mason.nvim", cmd = "Mason", build = ":MasonUpdate" },
     { "williamboman/mason-lspconfig.nvim" },
+    { "mfussenegger/nvim-jdtls" },
   },
-  config = function() require("user.lsp") end,
+  config = function()
+    require("user.lsp")
+  end,
 }
