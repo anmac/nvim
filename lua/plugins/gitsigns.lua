@@ -17,6 +17,7 @@ return {
         vim.notify("Gitsigns Plugin Failed!")
         return
       end
+      scrollbar.setup()
       vim.cmd([[highlight GitSignsCurrentLineBlame guifg=#6d707c]])
     end,
   },
