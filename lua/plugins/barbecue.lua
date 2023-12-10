@@ -22,5 +22,6 @@ return {
       vim.notify("Using TSContext Instead of Barbecue")
       return false
     end
+    return true
   end,
 }
