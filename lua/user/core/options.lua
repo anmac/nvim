@@ -1,6 +1,7 @@
 local f = require("user.resources.misc_icons").fillchars
 local l = require("user.resources.misc_icons").listchars
 
+-- Display :options
 local options = {
   -- 2 movin around, searching and patterns
   incsearch = true,
@@ -43,6 +44,7 @@ local options = {
 
   -- 6 multiple windows
   laststatus = 3,
+  winminwidth = 5,
   splitbelow = true,
   splitright = true,
 
@@ -60,11 +62,13 @@ local options = {
   showcmd = true,
   showmode = false,
   ruler = false,
+  confirm = true,
 
   -- 11 selection text
   clipboard = "unnamedplus",
 
   -- 12 editing text
+  undolevels = 10000,
   undofile = true,
   completeopt = { "menuone", "preview", "noselect" },
   pumheight = 12,
@@ -99,6 +103,7 @@ local options = {
   emoji = true,
 
   -- 24 various
+  virtualedit = "block",
   signcolumn = "yes",
 }
 
