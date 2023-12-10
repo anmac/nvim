@@ -145,6 +145,13 @@ cmp.setup.cmdline(":", {
       },
     },
   }),
+  enabled = function()
+    local disabled = {
+      IncRename = true,
+    }
+    local cmd = vim.fn.getcmdline():match("%S+")
+    return not disabled[cmd] or cmp.close()
+  end,
 })
 
 return M
