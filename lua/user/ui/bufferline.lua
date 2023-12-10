@@ -2,9 +2,13 @@ M = {
   options = {
     mode = "buffers",
     themable = true,
-    close_command = function(n) require("mini.bufremove").delete(n, false) end,
+    close_command = function(n)
+      require("mini.bufremove").delete(n, false)
+    end,
     right_mouse_command = "vertical sbuffer %d",
-    middle_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
+    middle_mouse_command = function(n)
+      require("mini.bufremove").delete(n, false)
+    end,
     indicator = {
       icon = "┃",
       style = "icon",
@@ -24,7 +28,7 @@ M = {
     show_tab_indicators = true,
     separator_style = "thin",
     hover = {
-      enabled = true,
+      enabled = false,
       delay = 50,
       reveal = { "close" },
     },
