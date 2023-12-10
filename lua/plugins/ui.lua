@@ -23,4 +23,18 @@ return {
       scrollbar.setup(opts)
     end,
   },
+  {
+    "kosayoda/nvim-lightbulb",
+    opts = function()
+      return require("user.ui.lightbulb")
+    end,
+    config = function(_, opts)
+      local status_ok_lightbulb, lightbulb = pcall(require, "nvim-lightbulb")
+      if not status_ok_lightbulb then
+        vim.notify("Lightbulb Plugin Failed!")
+        return
+      end
+      lightbulb.setup(opts)
+    end,
+  },
 }
