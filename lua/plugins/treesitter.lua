@@ -6,6 +6,20 @@ return {
   dependencies = {
     "nvim-treesitter/playground",
     {
+      "nvim-treesitter/nvim-treesitter-context",
+      opts = function()
+        return require("user.treesitter.nvim-treesitter-context")
+      end,
+      config = function(_, opts)
+        local status_ok_context, context = pcall(require, "treesitter-context")
+        if not status_ok_context then
+          vim.notify("Treesitter-context Plugin Failed!")
+          return
+        end
+        context.setup(opts)
+      end,
+    },
+    {
       "nvim-treesitter/nvim-treesitter-textobjects",
       init = function()
         load_textobjects = true
@@ -18,8 +32,8 @@ return {
         return require("user.treesitter.nvim-autopairs")
       end,
       config = function(_, opts)
-        local status_ok, autopairs = pcall(require, "nvim-autopairs")
-        if not status_ok then
+        local status_ok_autopairs, autopairs = pcall(require, "nvim-autopairs")
+        if not status_ok_autopairs then
           vim.notify("Nvim-Autopairs Plugin Failed!")
           return
         end
@@ -31,8 +45,8 @@ return {
       "JoosepAlviste/nvim-ts-context-commentstring",
       opts = { enable_autocmd = false },
       config = function(_, opts)
-        local status_ok, ts_context_commentstring = pcall(require, "ts_context_commentstring")
-        if not status_ok then
+        local status_ok_context_commentstring, ts_context_commentstring = pcall(require, "ts_context_commentstring")
+        if not status_ok_context_commentstring then
           vim.notify("nvim-ts-context-commentstring Plugin Failed!")
           return
         end
