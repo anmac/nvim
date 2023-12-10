@@ -155,6 +155,8 @@ local mappings = {
     h = { "<cmd>TSHighlightCapturesUnderCursor<CR>", "Highlight" },
     p = { "<cmd>TSPlaygroundToggle<CR>", "Playground" },
   },
+
+  u = { "<cmd>UndotreeToggle<CR>", "UndoTree" },
 }
 
 local opts = {
