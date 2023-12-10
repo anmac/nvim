@@ -9,8 +9,7 @@ M = {
   select_prompts = true,
   view = {
     width = {
-      min = 35,
-      max = 45,
+      min = 25,
     },
     preserve_window_proportions = false,
   },
