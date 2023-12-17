@@ -41,7 +41,8 @@ return {
       "windwp/nvim-autopairs",
       event = "InsertEnter",
       opts = {},
-    }
+    },
+    { "HiPhish/nvim-ts-rainbow2" },
   },
   keys = {
     { "<C-Space>", desc = "Increment selection" },
@@ -129,6 +130,7 @@ return {
       },
     },
     autotag = { enable = true },
+    rainbow = { enable = true, disable = { "html" } },
   },
   config = function(_, opts)
     if type(opts.ensure_installed) == "table" then
