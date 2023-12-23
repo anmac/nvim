@@ -3,15 +3,15 @@ local Util = require("util")
 return {
   {
     "rcarriga/nvim-notify",
-    keys = {
-      {
-        "<leader>un",
-        function()
-          require("notify").dismiss({ silent = true, pending = true })
-        end,
-        desc = "Dismiss all Notifications",
-      },
-    },
+   -- keys = {
+   --   {
+   --     "<leader>un",
+   --     function()
+   --       require("notify").dismiss({ silent = true, pending = true })
+   --     end,
+   --     desc = "Dismiss all Notifications",
+   --   },
+   -- },
     opts = {
       timeout = 3000,
       max_height = function()
@@ -32,5 +32,45 @@ return {
         end)
       end
     end,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {
+      indent = {
+        char = "▏",
+        tab_char = "▏",
+      },
+      scope = { enabled = true, show_start = false, show_end = false },
+      exclude = {
+        filetypes = {
+          "",
+          "Markdown",
+          "NvimTree",
+          "TelescopePrompt",
+          "TelescopeResult",
+          "Trouble",
+          "alpha",
+          "checkhealth",
+          "dashboard",
+          "fugitive",
+          "gitcommit",
+          "help",
+          "lazy",
+          "lazyterm",
+          "lspinfo",
+          "man",
+          "markdown",
+          "mason",
+          "neo-tree",
+          "neogitstatus",
+          "notify",
+          "packer",
+          "startify",
+          "toggleterm",
+          "trouble",
+        },
+      },
+    },
   },
 }
