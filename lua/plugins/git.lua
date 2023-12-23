@@ -8,7 +8,7 @@ return {
   {
     "tpope/vim-fugitive",
     keys = {
-      { "<leader>gf", vim.cmd.Git, desc = "Git Status" }
+      { "<leader>gf", vim.cmd.Git, desc = "Fugitive" }
     }
   },
   {
@@ -42,16 +42,16 @@ return {
 
         keymap("n", "]h", gs.next_hunk, "Next Hunk")
         keymap("n", "[h", gs.prev_hunk, "Prev Hunk")
-        keymap({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
-        keymap({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
-        keymap("n", "<leader>gS", gs.stage_buffer, "Stage Buffer")
-        keymap("n", "<leader>gu", gs.undo_stage_hunk, "Undo Stage Hunk")
-        keymap("n", "<leader>gR", gs.reset_buffer, "Reset Buffer")
-        keymap("n", "<leader>gp", gs.preview_hunk, "Preview Hunk")
-        keymap("n", "<leader>gb", function() gs.blame_line() end, "Blame Line")
-        keymap("n", "<leader>gB", function() gs.blame_line({ full = true }) end, "Blame Line Full")
-        keymap("n", "<leader>gd", gs.diffthis, "Diff This")
-        keymap("n", "<leader>gD", function() gs.diffthis("~") end, "Diff This ~")
+        keymap({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+        keymap({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+        keymap("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
+        keymap("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
+        keymap("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
+        keymap("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
+        keymap("n", "<leader>ghb", function() gs.blame_line() end, "Blame Line")
+        keymap("n", "<leader>ghB", function() gs.blame_line({ full = true }) end, "Blame Line Full")
+        keymap("n", "<leader>ghd", gs.diffthis, "Diff This")
+        keymap("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
         keymap({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
         vim.cmd([[highlight GitSignsCurrentLineBlame guifg=#6d707c]])
       end,

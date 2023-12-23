@@ -8,7 +8,21 @@ return {
     "MunifTanjim/nui.nvim",
   },
   keys = {
-    { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "File Explorer" }
+    { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "File Explorer" },
+    {
+      "<leader>ge",
+      function()
+        require("neo-tree.command").execute({ source = "git_status", toggle = true })
+      end,
+      desc = "Git explorer",
+    },
+    {
+      "<leader>be",
+      function()
+        require("neo-tree.command").execute({ source = "buffers", toggle = true })
+      end,
+      desc = "Buffer explorer",
+    },
   },
   opts = {
     close_if_last_window = true,
