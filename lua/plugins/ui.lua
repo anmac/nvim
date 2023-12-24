@@ -3,15 +3,15 @@ local Util = require("util")
 return {
   {
     "rcarriga/nvim-notify",
-   -- keys = {
-   --   {
-   --     "<leader>un",
-   --     function()
-   --       require("notify").dismiss({ silent = true, pending = true })
-   --     end,
-   --     desc = "Dismiss all Notifications",
-   --   },
-   -- },
+    -- keys = {
+    --   {
+    --     "<leader>un",
+    --     function()
+    --       require("notify").dismiss({ silent = true, pending = true })
+    --     end,
+    --     desc = "Dismiss all Notifications",
+    --   },
+    -- },
     opts = {
       timeout = 3000,
       max_height = function()
@@ -72,5 +72,27 @@ return {
         },
       },
     },
+  },
+  {
+    "NvChad/nvim-colorizer.lua",
+    opts = {
+      filetypes = {
+        "html",
+        css = { names = true },
+        scss = { names = true },
+        "javascript",
+        "typescript",
+        "php",
+      },
+      user_default_options = {
+        names = false,
+        css = true,
+        tailwind = true,
+        sass = { enable = true },
+      },
+    },
+    config = function(_, opts)
+      require("colorizer").setup(opts)
+    end,
   },
 }
