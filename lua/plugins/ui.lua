@@ -83,6 +83,7 @@ return {
         "javascript",
         "typescript",
         "php",
+        "lua",
       },
       user_default_options = {
         names = false,
