@@ -4,8 +4,8 @@ return {
   cmd = "Neotree",
   dependencies = {
     { "nvim-lua/plenary.nvim", lazy = true },
-    "nvim-tree/nvim-web-devicons",
-    "MunifTanjim/nui.nvim",
+    { "nvim-tree/nvim-web-devicons", lazy = true },
+    { "MunifTanjim/nui.nvim", lazy = true },
   },
   keys = {
     { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "File Explorer" },
