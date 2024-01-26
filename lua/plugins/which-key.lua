@@ -9,7 +9,7 @@ return {
       ["g"] = { name = "+GoTo" },
       ["]"] = { name = "+Next" },
       ["["] = { name = "+Prev" },
-      ["<leader><tab>"] = { name = "+Tabs" },
+      ["<leader><Tab>"] = { name = "+Tabs" },
       ["<leader>b"] = { name = "+Buffer" },
       ["<leader>c"] = { name = "+Code" },
       ["<leader>f"] = { name = "+File/Find" },
