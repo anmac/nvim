@@ -70,6 +70,7 @@ return {
           "toggleterm",
           "trouble",
         },
+        buftypes = { "terminal", "nofile", "quickfix", "prompt", "nvimtree" },
       },
     },
   },
