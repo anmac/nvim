@@ -19,7 +19,7 @@ return {
     local icons = require("config.icons")
 
     vim.o.laststatus = vim.g.lualine_laststatus
-    vim.api.nvim_set_hl(0, "SLTabnine", { fg = "#cb43f0" })
+    vim.api.nvim_set_hl(0, "Tabnine", { fg = "#cb43f0" })
 
     local function hide_in_col(col)
       return function()
@@ -29,7 +29,7 @@ return {
 
     local branch = {
       "branch",
-      icon = { "", color = { fg = "#d16969", bg = "" } },
+      icon = { "", color = { fg = "#d16969", bg = "" } },
       color = { fg = "#dfafdf", bg = "" },
     }
 
@@ -38,9 +38,9 @@ return {
       fmt = function(str)
         local parts = vim.split(str, " ")
         if vim.o.columns > 100 then
-          return "%#SLTabnine#" .. parts[1] .. " %* " .. parts[2] .. " " .. parts[3]
+          return "%#Tabnine#" .. parts[1] .. " %* " .. parts[2] .. " " .. parts[3]
         else
-          return "%#SLTabnine#" .. parts[1]
+          return "%#Tabnine#" .. parts[1]
         end
       end,
       cond = hide_in_col(85),
@@ -89,8 +89,8 @@ return {
     local filetype = {
       "filetype",
       fmt = function(str)
-        if vim.fn.expand("%:t") == "neo-tree" then
-          return "🌳" .. str
+        if vim.bo.filetype == "neo-tree" then
+          return "🌳"
         end
         return str
       end,
@@ -146,6 +146,7 @@ return {
           Util.lualine.pretty_path(),
         },
         lualine_x = {
+          tabnine,
           -- stylua: ignore
           {
             function() return require("noice").api.status.command.get() end,
@@ -190,7 +191,7 @@ return {
           end,
         },
       },
-      extensions = { "fugitive", "neo-tree", "lazy", "man", "nvim-dap-ui" },
+      extensions = { "fugitive", "lazy", "man", "nvim-dap-ui" },
     }
   end,
 }
