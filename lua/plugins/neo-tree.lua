@@ -26,6 +26,7 @@ return {
   },
   opts = {
     close_if_last_window = true,
+    default_source = "last",
     log_level = "info", -- "trace", "debug", "info", "warn", "error", "fatal"
     log_to_file = false,
     source_selector = {
@@ -34,6 +35,9 @@ return {
       content_layout = "center",
     },
     default_component_configs = {
+      diagnostics = {
+        symbols = { hint = "" }
+      },
       name = { use_git_status_colors = false },
       file_size = { enabled = false },
       type = { enabled = false },
@@ -72,6 +76,7 @@ return {
         enabled = true,
         leave_dirs_open = true,
       },
+      use_libuv_file_watcher = true,
     },
   },
   config = function(_, opts)
