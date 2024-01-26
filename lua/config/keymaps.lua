@@ -100,7 +100,10 @@ keymap("i", ";", ";<C-g>u")
 
 -- Greatest remaps ever
 keymap("x", "<leader>p", "\"_dP", dopts("Paste text"))
-keymap({ "n", "x" }, "<leader>d", "\"_d", dopts("Delete text"))
+keymap({ "n", "x" }, "d", "\"_d", dopts("Delete without copy"))
+keymap({ "n", "x" }, "<leader>d", "\"+d", dopts("Delete and copy to clipboard"))
+keymap("n", "D", "\"_D", dopts("Delete line without copy"))
+keymap("n", "<leader>D", "\"+D", dopts("Delete line and copy to clipboard"))
 
 -- Select all
 keymap("n", "<C-a>", "ggVG", dopts("Select all"))
