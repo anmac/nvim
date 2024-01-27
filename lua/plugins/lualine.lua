@@ -43,7 +43,10 @@ return {
           return "%#Tabnine#" .. parts[1]
         end
       end,
-      cond = hide_in_col(85),
+      cond = function()
+        local enough_space = hide_in_col(85)()
+        return vim.fn.exists(":TabnineStatus") == 2 and enough_space
+      end
     }
 
     local location = {
