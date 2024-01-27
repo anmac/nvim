@@ -46,7 +46,7 @@ return {
   },
   keys = {
     { "<C-Space>", desc = "Increment selection" },
-    { "<bs>", desc = "Decrement selection", mode = "x" },
+    { "<BS>", desc = "Decrement selection", mode = "x" },
   },
   opts = {
     ensure_installed = {
@@ -93,7 +93,7 @@ return {
     indent = { enable = true },
     highlight = {
       enable = true,
-      disable = function(lang, buf)
+      disable = function(_, buf)
         local max_filesize = 100 * 1024 -- 100 KB
         local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
         if ok and stats and stats.size > max_filesize then
@@ -105,13 +105,28 @@ return {
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = "<C-space>",
-        node_incremental = "<C-space>",
+        init_selection = "<C-Space>",
+        node_incremental = "<C-Space>",
         scope_incremental = false,
-        node_decremental = "<bs>",
+        node_decremental = "<BS>",
       },
     },
     textobjects = {
+      select = {
+        enable = true,
+        lookahead = true,
+        keymaps = {
+          ["af"] = { query = "@function.outer", desc = "outer part of function" },
+          ["if"] = { query = "@function.inner", desc = "inner part of function" },
+          ["ac"] = { query = "@class.outer", desc = "outer part of class" },
+          ["ic"] = { query = "@class.inner", desc = "inner part of class" },
+        },
+        selection_modes = {
+          ["@parameter.outer"] = "v", -- charwise
+          ["@function.outer"] = "V", -- linewise
+          ["@class.outer"] = "<C-v>", -- blockwise
+        },
+      },
       swap = {
         enable = true,
         swap_next = {
