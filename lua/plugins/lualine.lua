@@ -45,7 +45,7 @@ return {
       end,
       cond = function()
         local enough_space = hide_in_col(85)()
-        return vim.fn.exists(":TabnineStatus") == 2 and enough_space
+        return Util.has("tabnine-nvim") and enough_space
       end
     }
 

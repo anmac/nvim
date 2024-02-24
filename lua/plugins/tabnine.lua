@@ -1,7 +1,7 @@
 return {
   "codota/tabnine-nvim",
   build = "./dl_binaries.sh",
-  enabled = false,
+  -- enabled = false,
   opts = {
     disable_auto_comment = true,
     accept_keymap = "<Tab>",
