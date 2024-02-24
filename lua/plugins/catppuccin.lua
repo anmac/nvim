@@ -15,6 +15,7 @@ return {
         NonText = { fg = "#50545d" },
         LineNr = { fg = "#6d707c" },
         CursorLineNr = { fg = "#5eacd3" },
+        ["@parameter"] = { style = { "italic" } },
       }
     end,
     integrations = {
