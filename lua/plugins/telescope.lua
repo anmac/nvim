@@ -13,7 +13,8 @@ return {
     return {
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
       -- find
-      -- { "<leader>ff", builtin.find_files, desc = "Find File" },
+      { "<leader>fs", Util.telescope("files", { cwd = false, hidden = true, no_ignore = true }), desc = "Find Files (no ignore)" },
+      { "<leader>fS", Util.telescope("live_grep", { cwd = false, additional_args = { "--no-ignore" } }), desc = "Grep (no ignore)" },
       { "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
       { "<leader>fc", Util.telescope.config_files(), desc = "Find Config File" },
       { "<leader>ff", Util.telescope("files"), desc = "Find Files (root dir)" },
