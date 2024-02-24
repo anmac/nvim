@@ -80,6 +80,9 @@ local options = {
 
   -- 14 folding
   foldenable = true,
+  foldlevel = 99,
+  foldlevelstart = 99,
+  foldcolumn = '1',
   foldmethod = "manual",
 
   -- 16 mapping
@@ -101,6 +104,7 @@ local options = {
 
   -- 24 various
   virtualedit = "block",
+  sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
   signcolumn = "yes",
 }
 
