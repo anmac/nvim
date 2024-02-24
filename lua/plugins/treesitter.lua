@@ -43,6 +43,11 @@ return {
       opts = {},
     },
     { "HiPhish/nvim-ts-rainbow2" },
+    {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      lazy = true,
+      opts = { enable_autocmd = false },
+    },
   },
   keys = {
     { "<C-Space>", desc = "Increment selection" },
