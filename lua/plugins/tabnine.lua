@@ -15,6 +15,7 @@ return {
       "NvimTree",
       "toggleterm",
       "TelescopePrompt",
+      "neo-tree-popup",
       "nofile",
     },
     log_file_path = nil,
