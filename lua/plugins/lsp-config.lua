@@ -83,7 +83,7 @@ return {
                 callSnippet = "Replace",
               },
               format = {
-                enable = false,
+                enable = true,
               },
               single_file_support = {
                 enable = true,
