@@ -45,7 +45,7 @@ vim.g.maplocalleader = " "
 -- Write/Save, Quit and Quit without save
 keymap("n", "<leader>w", "<cmd>w<CR>", dopts("Save"))
 keymap("n", "<leader>q", function() smart_quit() end, dopts("Quit"))
-keymap("n", "<leader>Q", "<cmd>q!<CR>", dopts("Quit no save"))
+keymap("n", "<leader>Q", "<cmd>qa<CR>", dopts("Quit all"))
 keymap({ "i", "n", "s" }, "<C-s>", "<cmd>w<CR><esc>", { desc = "Save file" })
 
 -- Move around in Insert Mode with hjkl
