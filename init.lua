@@ -19,7 +19,7 @@ local opts = {
   ui = {
     border = "rounded",
   },
-  checker = { enabled = true },
+  checker = { enabled = true, notify = false },
   performance = {
     rtp = {
       disabled_plugins = {
