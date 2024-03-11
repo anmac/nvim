@@ -142,7 +142,7 @@ return {
   config = function(_, opts)
     local telescope = require("telescope")
     telescope.setup(opts)
-    telescope.load_extension("fzf")
-    telescope.load_extension("harpoon")
-  end
+    pcall(telescope.load_extension, "fzf")
+    pcall(telescope.load_extension, "harpoon")
+  end,
 }
