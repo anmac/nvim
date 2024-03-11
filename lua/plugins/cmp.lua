@@ -9,7 +9,7 @@ return {
       "L3MON4D3/LuaSnip",
       version = "v2.*",
       build = (not jit.os:find("Windows"))
-        and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp"
+          and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp"
         or nil,
       dependencies = {
         "rafamadriz/friendly-snippets",
@@ -29,8 +29,8 @@ return {
   },
   opts = function()
     vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-    vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg="NONE", fg="#9cdcfe" })
-    vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link="CmpIntemAbbrMatch" })
+    vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = "#9cdcfe" })
+    vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpIntemAbbrMatch" })
 
     local cmp = require("cmp")
     local defaults = require("cmp.config.default")()
@@ -47,8 +47,7 @@ return {
         else
           local context = require("cmp.config.context")
           -- Disable completion in comments
-          return not context.in_treesitter_capture("comment")
-            and not context.in_syntax_group("Comment")
+          return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
         end
       end,
       completion = {
@@ -86,10 +85,10 @@ return {
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "path" },
+      }, {
         { name = "buffer" },
-      },{
-          { name = "emoji" }
-        }),
+        { name = "emoji" },
+      }),
       formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, item)
@@ -107,16 +106,17 @@ return {
           end
           item.abbr = trim(item.abbr)
           -- Menu
-          item.menu = label .. " "
-          .. ({
-            luasnip = "[LuaSnip]",
-            nvim_lsp = "[LSP]",
-            buffer = "[Buffer]",
-            path = "[Path]",
-            cmdline = "[Cmdline]",
-            treesitter = "[Treesitter]",
-            emoji = "[Emoji]",
-          })[entry.source.name]
+          item.menu = label
+            .. " "
+            .. ({
+              luasnip = "[LuaSnip]",
+              nvim_lsp = "[LSP]",
+              buffer = "[Buffer]",
+              path = "[Path]",
+              cmdline = "[Cmdline]",
+              treesitter = "[Treesitter]",
+              emoji = "[Emoji]",
+            })[entry.source.name]
           return item
         end,
       },
@@ -147,13 +147,13 @@ return {
       sources = cmp.config.sources({
         { name = "path" },
       }, {
-          {
-            name = "cmdline",
-            option = {
-              ignore_cmds = { "Man", "!" },
-            },
+        {
+          name = "cmdline",
+          option = {
+            ignore_cmds = { "Man", "!" },
           },
-        }),
+        },
+      }),
       enabled = function()
         -- Set of commands where cmp will be disabled
         local disabled = {
@@ -173,5 +173,5 @@ return {
         { name = "buffer" },
       },
     })
-  end
+  end,
 }
