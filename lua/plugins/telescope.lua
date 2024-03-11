@@ -12,18 +12,37 @@ return {
   keys = function()
     return {
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+      {
+        "<leader>\\",
+        function()
+          require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_ivy({
+            winblend = 10,
+            previewer = false,
+          }))
+        end,
+        desc = "Fuzzily search in current buffer",
+      },
       -- find
-      { "<leader>fs", Util.telescope("files", { cwd = false, hidden = true, no_ignore = true }), desc = "Find Files (no ignore)" },
-      { "<leader>fS", Util.telescope("live_grep", { cwd = false, additional_args = { "--no-ignore" } }), desc = "Grep (no ignore)" },
+      {
+        "<leader>fs",
+        Util.telescope("files", { cwd = false, hidden = true, no_ignore = true }),
+        desc = "Find Files (no ignore)",
+      },
       { "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
       { "<leader>fc", Util.telescope.config_files(), desc = "Find Config File" },
       { "<leader>ff", Util.telescope("files"), desc = "Find Files (root dir)" },
       { "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
       { "<leader>fg", Util.telescope("live_grep"), desc = "Live Grep (root dir)" },
       { "<leader>fG", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+      {
+        "<leader>fw",
+        Util.telescope("live_grep", { cwd = false, additional_args = { "--no-ignore" } }),
+        desc = "Grep (no ignore)",
+      },
       { "<leader>fm", "<cmd>Telescope harpoon marks<cr>", desc = "Harpoon Marks" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       { "<leader>fR", Util.telescope("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },
+      { "<leader>f.", require("telescope.builtin").resume, desc = "[S]earch [R]esume" },
       -- git
       { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Commits" },
       { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Status" },
