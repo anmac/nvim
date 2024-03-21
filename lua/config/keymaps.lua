@@ -42,6 +42,8 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- Clear on pressing <Esc> in normal mode
+keymap({ "i", "n" }, "<Esc>", "<cmd>nohlsearch<cr><esc>", dopts("Escape and clear hlsearch"))
 -- Write/Save, Quit and Quit without save
 keymap("n", "<leader>w", "<cmd>w<CR>", dopts("Save"))
 keymap("n", "<leader>q", function() smart_quit() end, dopts("Quit"))
