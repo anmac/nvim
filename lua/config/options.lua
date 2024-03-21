@@ -34,7 +34,7 @@ local options = {
 
   -- 5 syntax, highlighting and spelling
   background = "dark",
-  hlsearch = false,
+  hlsearch = true,
   termguicolors = true,
   cursorcolumn = false,
   cursorline = true,
