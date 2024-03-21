@@ -1,3 +1,5 @@
+local Util = require("util")
+
 local M = {}
 
 M._keys = nil
@@ -35,13 +37,11 @@ function M.get()
     },
     {
       "<leader>cf",
-      function(bufnr)
-        vim.lsp.buf.format({
-          bufnr = bufnr or vim.api.nvim_get_current_buf(),
-          async = false,
-        })
+      function()
+        Util.format({ force = true })
       end,
-      desc = "Format File",
+      mode = { "n", "v" },
+      desc = "Format",
     }
   }
   if require("util").has("inc-rename.nvim") then
