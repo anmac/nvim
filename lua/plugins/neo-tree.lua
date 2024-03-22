@@ -25,6 +25,7 @@ return {
     },
   },
   opts = {
+    auto_clean_after_session_restore = true,
     close_if_last_window = true,
     default_source = "last",
     log_level = "info", -- "trace", "debug", "info", "warn", "error", "fatal"
@@ -35,19 +36,24 @@ return {
       content_layout = "center",
     },
     default_component_configs = {
+      container = { enable_character_fade = false },
       diagnostics = {
-        symbols = { hint = "" }
+        symbols = { hint = "" },
       },
+      indent = { with_expanders = true },
       name = { use_git_status_colors = false },
       file_size = { enabled = false },
       type = { enabled = false },
       last_modified = { enabled = false },
+      symlink_target = { enabled = true },
     },
     window = {
       same_level = true,
-      insert_as = "sibling",
+      insert_as = "child",
       mappings = {
         ["<space>"] = "noop",
+        ["s"] = "open_split",
+        ["v"] = "open_vsplit",
         ["a"] = {
           "add",
           config = {
@@ -60,9 +66,18 @@ return {
             show_path = "relative",
           },
         },
+        ["Y"] = {
+          function(state)
+            local node = state.tree:get_node()
+            local path = node:get_id()
+            vim.fn.setreg("+", path, "c")
+          end,
+          desc = "copy path to clipboard",
+        },
       },
     },
     filesystem = {
+      bind_to_cwd = false,
       window = {
         fuzzy_finder_mappings = {
           ["<down>"] = "move_cursor_down",
@@ -71,7 +86,6 @@ return {
           ["<C-k>"] = "move_cursor_up",
         },
       },
-      group_empty_dirs = true,
       follow_current_file = {
         enabled = true,
         leave_dirs_open = true,
