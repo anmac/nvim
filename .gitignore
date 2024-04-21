@@ -39,8 +39,13 @@ luac.out
 *.x86_64
 *.hex
 
-# Other directories and files
-plugin/packer_compiled.lua
-java-debug/
-vscode-java-test/
-.luarc.json
+# Other files and directories
+.vscode/
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
