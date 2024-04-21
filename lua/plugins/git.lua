@@ -11,6 +11,7 @@ return {
     "tpope/vim-fugitive",
     keys = {
       { "<leader>gf", vim.cmd.Git, desc = "Fugitive" },
+      { "<leader>gB", "<cmd>Git blame<cr>", desc = "Blame" },
     },
   },
   {

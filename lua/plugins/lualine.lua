@@ -19,7 +19,6 @@ return {
     local icons = require("config.icons")
 
     vim.o.laststatus = vim.g.lualine_laststatus
-    vim.api.nvim_set_hl(0, "Tabnine", { fg = "#cb43f0" })
 
     local function hide_in_col(col)
       return function()
@@ -37,16 +36,30 @@ return {
       "tabnine",
       fmt = function(str)
         local parts = vim.split(str, " ")
-        if vim.o.columns > 100 then
+        if vim.o.columns > 120 then
           return "%#Tabnine#" .. parts[1] .. " %* " .. parts[2] .. " " .. parts[3]
-        else
+        elseif vim.o.columns > 90 then
           return "%#Tabnine#" .. parts[1]
         end
       end,
       cond = function()
         local enough_space = hide_in_col(85)()
         return Util.has("tabnine-nvim") and enough_space
-      end
+      end,
+    }
+
+    local codeium = {
+      "codeium#GetStatusString",
+      fmt = function()
+        if vim.o.columns > 120 then
+          return "Codeium:" .. "%#Codeium#{…}"
+        elseif vim.o.columns > 90 then
+          return "%#Codeium#{…}"
+        end
+      end,
+      cond = function()
+        return vim.api.nvim_call_function("codeium#GetStatusString", {}) ~= nil
+      end,
     }
 
     local location = {
@@ -56,7 +69,7 @@ return {
         return string.format("Ln %s,Col %s", line, col)
       end,
       color = { fg = "#fff" },
-      cond = hide_in_col(100),
+      cond = hide_in_col(120),
     }
 
     local spaces = {
@@ -64,7 +77,7 @@ return {
         return "Spaces:" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
       end,
       color = { fg = "#fff" },
-      cond = hide_in_col(80),
+      cond = hide_in_col(50),
     }
 
     local eol = {
@@ -79,7 +92,7 @@ return {
         end
       end,
       color = { fg = "#fff" },
-      cond = hide_in_col(50),
+      cond = hide_in_col(80),
     }
 
     local encoding = {
@@ -120,7 +133,6 @@ return {
               warn = icons.diagnostics.Warn,
               hint = icons.diagnostics.Hint,
             },
-            always_visible = true,
           },
           {
             "diff",
@@ -150,6 +162,7 @@ return {
         },
         lualine_x = {
           tabnine,
+          codeium,
           -- stylua: ignore
           {
             function() return require("noice").api.status.command.get() end,

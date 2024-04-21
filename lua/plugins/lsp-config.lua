@@ -53,6 +53,7 @@ return {
         },
       },
       inlay_hints = { enabled = true },
+      codelens = { enabled = true },
       capabilities = {},
       format = {
         formatting_options = nil,
@@ -101,10 +102,59 @@ return {
         },
         pyright = {},
         sqlls = {},
+        terraformls = {},
         tsserver = {},
-        yamlls = {},
+        yamlls = {
+          -- Have to add this for yamlls to understand that we support line folding
+          capabilities = {
+            textDocument = {
+              foldingRange = {
+                dynamicRegistration = false,
+                lineFoldingOnly = true,
+              },
+            },
+          },
+          -- lazy-load schemastore when needed
+          on_new_config = function(new_config)
+            new_config.settings.yaml.schemas = vim.tbl_deep_extend(
+              "force",
+              new_config.settings.yaml.schemas or {},
+              require("schemastore").yaml.schemas()
+            )
+          end,
+          settings = {
+            redhat = { telemetry = { enabled = false } },
+            yaml = {
+              keyOrdering = false,
+              format = {
+                enable = true,
+              },
+              validate = true,
+              schemaStore = {
+                -- Must disable built-in schemaStore support to use
+                -- schemas from SchemaStore.nvim plugin
+                enable = false,
+                -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+                url = "",
+              },
+            },
+          },
+        },
       },
       setup = {
+        -- jdtls = function()
+        --   return true -- avoid duplicate servers
+        -- end,
+        yamlls = function()
+          -- Neovim < 0.10 does not have dynamic registration for formatting
+          if vim.fn.has("nvim-0.10") == 0 then
+            Util.lsp.on_attach(function(client, _)
+              if client.name == "yamlls" then
+                client.server_capabilities.documentFormattingProvider = true
+              end
+            end)
+          end
+        end,
       },
     },
     config = function(_, opts)
@@ -143,14 +193,14 @@ return {
 
       if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
         opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
-        or function(diagnostic)
-          local icons = require("config.icons").diagnostics
-          for d, icon in pairs(icons) do
-            if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
-              return icon
+          or function(diagnostic)
+            local icons = require("config.icons").diagnostics
+            for d, icon in pairs(icons) do
+              if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
+                return icon
+              end
             end
           end
-        end
       end
 
       vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
@@ -235,5 +285,5 @@ return {
       vim.keymap.set("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
       vim.keymap.set("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
     end,
-  }
+  },
 }

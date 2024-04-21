@@ -17,7 +17,7 @@ return {
         function()
           require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_ivy({
             winblend = 10,
-            previewer = false,
+            previewer = true,
           }))
         end,
         desc = "Fuzzily search in current buffer",
@@ -29,6 +29,7 @@ return {
         desc = "Find Files (no ignore)",
       },
       { "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
+      { "<C-p>", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
       { "<leader>fc", Util.telescope.config_files(), desc = "Find Config File" },
       { "<leader>ff", Util.telescope("files"), desc = "Find Files (root dir)" },
       { "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
@@ -46,6 +47,7 @@ return {
       -- git
       { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Commits" },
       { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Status" },
+      { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Branches" },
       -- search
       { '<leader>s"', "<cmd>Telescope registers<cr>", desc = "Registers" },
       { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },

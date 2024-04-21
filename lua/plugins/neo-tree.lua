@@ -41,7 +41,7 @@ return {
     },
   },
   opts = {
-    auto_clean_after_session_restore = true,
+    auto_clean_after_session_restore = false,
     close_if_last_window = true,
     default_source = "last",
     log_level = "info", -- "trace", "debug", "info", "warn", "error", "fatal"
@@ -82,6 +82,7 @@ return {
             show_path = "relative",
           },
         },
+        ["w"] = "open",
         ["Y"] = {
           function(state)
             local node = state.tree:get_node()
@@ -90,6 +91,7 @@ return {
           end,
           desc = "copy path to clipboard",
         },
+        ["Z"] = "expand_all_nodes",
       },
     },
     filesystem = {
@@ -102,6 +104,10 @@ return {
           ["<C-k>"] = "move_cursor_up",
         },
       },
+      filtered_items = {
+        hide_dotfiles = false,
+        hide_gitignored = true,
+      },
       follow_current_file = {
         enabled = true,
         leave_dirs_open = true,
@@ -110,7 +116,28 @@ return {
     },
   },
   config = function(_, opts)
+    local function on_move(data)
+      Util.lsp.on_rename(data.source, data.destination)
+    end
+
+    local function git_refresh()
+      require("neo-tree.sources.git_status").refresh()
+    end
+
+    local events = require("neo-tree.events")
+    opts.event_handlers = opts.event_handlers or {}
+    vim.list_extend(opts.event_handlers, {
+      { event = events.FILE_MOVED, handler = on_move },
+      { event = events.FILE_RENAMED, handler = on_move },
+      { event = events.GIT_EVENT, handler = git_refresh },
+      { event = events.GIT_STATUS_CHANGED, handler = git_refresh },
+    })
     local neo_tree = require("neo-tree")
     neo_tree.setup(opts)
+
+    vim.api.nvim_create_autocmd("TermClose", {
+      pattern = "*lazygit",
+      callback = git_refresh,
+    })
   end,
 }
