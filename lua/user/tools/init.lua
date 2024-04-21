@@ -1,6 +1,0 @@
--- require("user.tools.telescope")
--- require("user.tools.which-key")
--- require("user.tools.todo-comments")
--- require("user.tools.trouble")
--- require("user.tools.vim-illuminate")
--- require("user.tools.tabnine")

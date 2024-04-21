@@ -1,13 +1,26 @@
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  opts = function() return require("user.tools.which-key") end,
+  opts = {
+    plugins = { spelling = true },
+    window = { border = "rounded" },
+    layout = { align = "center" },
+    defaults = {
+      ["g"] = { name = "+GoTo" },
+      ["]"] = { name = "+Next" },
+      ["["] = { name = "+Prev" },
+      ["<leader><Tab>"] = { name = "+Tabs" },
+      ["<leader>b"] = { name = "+Buffer" },
+      ["<leader>c"] = { name = "+Code" },
+      ["<leader>f"] = { name = "+File/Find" },
+      ["<leader>g"] = { name = "+Git" },
+      ["<leader>gh"] = { name = "+Hunks" },
+      ["<leader>s"] = { name = "+Search" },
+    },
+  },
   config = function(_, opts)
-    local status_ok, which_key = pcall(require, "which-key")
-    if not status_ok then
-      vim.notify("Which-Key Plugin Failed!")
-      return
-    end
-    which_key.setup(opts)
+    local wk = require("which-key")
+    wk.setup(opts)
+    wk.register(opts.defaults)
   end,
 }

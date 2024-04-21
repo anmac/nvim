@@ -14,12 +14,30 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {
   defaults = {
     lazy = false,
-    version = "*",
+    version = false,
+  },
+  spec = {
+    { import = "plugins" },
+    -- { import = "plugins.extras.lang.java" },
+    { import = "plugins.extras.lang.yaml" },
   },
   ui = {
     border = "rounded",
   },
+  checker = { enabled = true, notify = false },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
 }
 
-require("user.core")
-require("lazy").setup("plugins", opts)
+require("config")
+require("lazy").setup(opts)
