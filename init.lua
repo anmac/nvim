@@ -16,6 +16,11 @@ local opts = {
     lazy = false,
     version = false,
   },
+  spec = {
+    { import = "plugins" },
+    -- { import = "plugins.extras.lang.java" },
+    { import = "plugins.extras.lang.yaml" },
+  },
   ui = {
     border = "rounded",
   },
@@ -35,4 +40,4 @@ local opts = {
 }
 
 require("config")
-require("lazy").setup("plugins", opts)
+require("lazy").setup(opts)
