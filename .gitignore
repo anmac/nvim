@@ -39,8 +39,7 @@ luac.out
 *.x86_64
 *.hex
 
-# Other files and directories
-.vscode/
+# Lazyvim files
 tt.*
 .tests
 doc/tags
@@ -49,3 +48,7 @@ debug
 foo.*
 *.log
 data
+lazyvim.json
+
+# Other files and directories
+.vscode/
