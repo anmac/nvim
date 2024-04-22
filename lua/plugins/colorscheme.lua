@@ -5,7 +5,6 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
-    enabled = false,
     opts = {
       term_colors = true,
       styles = {
@@ -92,20 +91,12 @@ return {
         hl.GitSignsDelete = { fg = "#ea2e4e" }
       end,
     },
-    config = function(_, opts)
-      local status_ok, tokyonight = pcall(require, "tokyonight")
-      if not status_ok then
-        return
-      else
-        tokyonight.setup(opts)
-        vim.cmd.colorscheme("tokyonight")
-      end
-    end,
   },
 
   -- gruvbox
   {
     "ellisonleao/gruvbox.nvim",
+    enabled = false,
     opts = {
       undercurl = false,
       underline = false,
@@ -124,17 +115,5 @@ return {
       dim_inactive = false,
       transparent_mode = false,
     },
-    cond = function()
-      return not LazyVim.has("catppuccin") and not LazyVim.has("tokyonight")
-    end,
-    config = function(_, opts)
-      local status_ok, gruvbox = pcall(require, "gruvbox")
-      if not status_ok then
-        return
-      else
-        gruvbox.setup(opts)
-        vim.cmd.colorscheme("gruvbox")
-      end
-    end,
   },
 }
