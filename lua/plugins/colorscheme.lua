@@ -73,6 +73,7 @@ return {
   -- tokyonight
   {
     "folke/tokyonight.nvim",
+    enabled = false,
     opts = {
       style = "moon",
       styles = {
