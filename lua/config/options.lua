@@ -47,6 +47,9 @@ local options = {
   foldcolumn = "1",
   -- foldmethod = "manual",
 
+  -- 18 the swap file
+  swapfile = false,
+
   -- 24 various
   sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" },
   -- sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
