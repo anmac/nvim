@@ -37,7 +37,7 @@ local options = {
 
   -- 12 editing text
   completeopt = { "menuone", "preview", "noselect" },
-  pumblend = 10,
+  -- pumblend = 10,
   pumheight = 12,
 
   -- 14 folding
@@ -51,8 +51,19 @@ local options = {
   swapfile = false,
 
   -- 24 various
-  sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" },
-  -- sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
+  sessionoptions = {
+    "buffers",
+    "curdir",
+    "folds",
+    "globals",
+    "help",
+    "localoptions",
+    "skiprtp",
+    "tabpages",
+    "terminal",
+    "winpos",
+    "winsize",
+  },
 }
 
 for key, value in pairs(options) do
