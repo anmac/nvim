@@ -169,4 +169,45 @@ return {
       return opts
     end,
   },
+
+  -- indent guides for neovim
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    opts = {
+      indent = {
+        char = "▏",
+        tab_char = "▏",
+      },
+      scope = { enabled = true, show_start = false, show_end = false },
+      exclude = {
+        filetypes = {
+          "Markdown",
+          "NvimTree",
+          "TelescopePrompt",
+          "TelescopeResult",
+          "Trouble",
+          "alpha",
+          "checkhealth",
+          "dashboard",
+          "fugitive",
+          "gitcommit",
+          "help",
+          "lazy",
+          "lazyterm",
+          "lspinfo",
+          "man",
+          "markdown",
+          "mason",
+          "neo-tree",
+          "neogitstatus",
+          "notify",
+          "packer",
+          "startify",
+          "toggleterm",
+          "trouble",
+        },
+        buftypes = { "terminal", "nofile", "quickfix", "prompt", "nvimtree" },
+      },
+    },
+  },
 }
