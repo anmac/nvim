@@ -23,6 +23,7 @@ return {
         },
         separator_style = "thin",
       },
+      highlights = require("catppuccin.groups.integrations.bufferline").get(),
     },
   },
 
