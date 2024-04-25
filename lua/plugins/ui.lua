@@ -173,41 +173,60 @@ return {
   -- indent guides for neovim
   {
     "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      indent = {
-        char = "▏",
-        tab_char = "▏",
-      },
-      scope = { enabled = true, show_start = false, show_end = false },
-      exclude = {
-        filetypes = {
-          "Markdown",
-          "NvimTree",
-          "TelescopePrompt",
-          "TelescopeResult",
-          "Trouble",
-          "alpha",
-          "checkhealth",
-          "dashboard",
-          "fugitive",
-          "gitcommit",
-          "help",
-          "lazy",
-          "lazyterm",
-          "lspinfo",
-          "man",
-          "markdown",
-          "mason",
-          "neo-tree",
-          "neogitstatus",
-          "notify",
-          "packer",
-          "startify",
-          "toggleterm",
-          "trouble",
+    opts = function()
+      local rainbow_highlights = {
+        "RainbowDelimiterRed",
+        "RainbowDelimiterBlue",
+        "RainbowDelimiterCyan",
+        "RainbowDelimiterGreen",
+        "RainbowDelimiterOrange",
+        "RainbowDelimiterViolet",
+        "RainbowDelimiterYellow",
+      }
+      local hooks = require("ibl.hooks")
+      hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+
+      return {
+        indent = {
+          char = "▏",
+          tab_char = "▏",
         },
-        buftypes = { "terminal", "nofile", "quickfix", "prompt", "nvimtree" },
-      },
-    },
+        scope = {
+          enabled = true,
+          show_start = false,
+          show_end = false,
+          highlight = rainbow_highlights,
+        },
+        exclude = {
+          filetypes = {
+            "Markdown",
+            "NvimTree",
+            "TelescopePrompt",
+            "TelescopeResult",
+            "Trouble",
+            "alpha",
+            "checkhealth",
+            "dashboard",
+            "fugitive",
+            "gitcommit",
+            "help",
+            "lazy",
+            "lazyterm",
+            "lspinfo",
+            "man",
+            "markdown",
+            "mason",
+            "neo-tree",
+            "neogitstatus",
+            "notify",
+            "packer",
+            "startify",
+            "toggleterm",
+            "trouble",
+          },
+          buftypes = { "terminal", "nofile", "quickfix", "prompt", "nvimtree" },
+        },
+      }
+    end,
   },
 }
