@@ -37,7 +37,7 @@ local options = {
 
   -- 12 editing text
   completeopt = { "menuone", "preview", "noselect" },
-  -- pumblend = 10,
+  pumblend = 0,
   pumheight = 12,
 
   -- 14 folding
