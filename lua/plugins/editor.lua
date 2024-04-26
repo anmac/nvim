@@ -175,6 +175,28 @@ return {
     },
   },
 
+  -- Fugitive: A git wrapper so awesome, it should be illegal
+  {
+    "tpope/vim-fugitive",
+    keys = {
+      { "<leader>gB", "<cmd>Git blame<cr>", desc = "Blame Document" },
+    },
+  },
+
+  -- the undo history visualizer for VIM
+  {
+    "mbbill/undotree",
+    init = function()
+      vim.cmd([[
+      let g:undotree_WindowLayout = 3
+      let g:undotree_SetFocusWhenToggle = 1
+      ]])
+    end,
+    keys = {
+      { "<leader>gu", vim.cmd.UndotreeToggle, desc = "UndoTree" },
+    },
+  },
+
   -- vim-illuminate
   {
     "RRethy/vim-illuminate",
@@ -193,6 +215,7 @@ return {
         "dirvish",
         "DressingInput",
         "fugitive",
+        "git",
         "harpoon",
         "help",
         "lazy",
