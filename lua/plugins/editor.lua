@@ -57,14 +57,14 @@ return {
             ["<C-j>"] = "move_cursor_down",
             ["<C-k>"] = "move_cursor_up",
           },
-          filtered_items = {
-            hide_dotfiles = false,
-            hide_gitignored = true,
-          },
-          follow_current_file = {
-            enabled = true,
-            leave_dirs_open = true,
-          },
+        },
+        filtered_items = {
+          hide_dotfiles = false,
+          hide_gitignored = true,
+        },
+        follow_current_file = {
+          enabled = true,
+          leave_dirs_open = true,
         },
       },
       document_symbols = {
