@@ -51,6 +51,13 @@ return {
     end,
   },
 
+  -- autopairs for neovim
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    opts = {},
+  },
+
   -- rainbow delimiters with treesitter
   {
     "HiPhish/rainbow-delimiters.nvim",
