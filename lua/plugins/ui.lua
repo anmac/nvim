@@ -157,6 +157,15 @@ return {
       end
 
       deleteElement(opts["sections"].lualine_x, "diff")
+      table.insert(opts["sections"].lualine_x, {
+        function()
+          return require("noice").api.status.search.get()
+        end,
+        cond = function()
+          return package.loaded["noice"] and require("noice").api.status.search.has()
+        end,
+        color = { fg = "#ff9e64" },
+      })
       table.insert(opts["sections"].lualine_x, location)
       table.insert(opts["sections"].lualine_x, spaces)
       table.insert(opts["sections"].lualine_x, eol)
@@ -228,6 +237,17 @@ return {
           buftypes = { "terminal", "nofile", "quickfix", "prompt", "nvimtree" },
         },
       }
+    end,
+  },
+
+  -- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu
+  {
+    "folke/noice.nvim",
+    opts = function(_, opts)
+      opts.messages = { view_search = false }
+      opts.lsp.hover = { enabled = true, silent = true }
+      opts.presets.lsp_doc_border = true
+      return opts
     end,
   },
 }
