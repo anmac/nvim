@@ -250,4 +250,24 @@ return {
       return opts
     end,
   },
+
+  -- the fastest neovim colorizer
+  {
+    "NvChad/nvim-colorizer.lua",
+    opts = {
+      filetypes = {
+        "*",
+        "!lazy",
+        css = { names = true },
+        scss = { names = true },
+      },
+      user_default_options = {
+        names = false,
+        css = true,
+        css_fn = true,
+        tailwind = true,
+        sass = { enable = true },
+      },
+    },
+  },
 }
