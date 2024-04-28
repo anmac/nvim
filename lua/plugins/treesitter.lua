@@ -61,5 +61,9 @@ return {
   -- rainbow delimiters with treesitter
   {
     "HiPhish/rainbow-delimiters.nvim",
+    opts = { blacklist = { "html", "javascript", "jsx", "tsx" } },
+    config = function(_, opts)
+      require("rainbow-delimiters.setup").setup(opts)
+    end,
   },
 }
