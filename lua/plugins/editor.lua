@@ -23,7 +23,6 @@ return {
       },
     },
     opts = {
-      auto_clean_after_session_restore = false,
       close_if_last_window = true,
       default_source = "last",
       source_selector = {
@@ -124,6 +123,27 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      local function on_move(data)
+        LazyVim.lsp.on_rename(data.source, data.destination)
+      end
+      local function git_refresh()
+        require("neo-tree.sources.git_status").refresh()
+      end
+      local events = require("neo-tree.events")
+      opts.event_handlers = opts.event_handlers or {}
+      vim.list_extend(opts.event_handlers, {
+        { event = events.FILE_MOVED, handler = on_move },
+        { event = events.FILE_RENAMED, handler = on_move },
+        { event = events.GIT_EVENT, handler = git_refresh },
+        { event = events.GIT_STATUS_CHANGED, handler = git_refresh },
+      })
+      require("neo-tree").setup(opts)
+      vim.api.nvim_create_autocmd("TermClose", {
+        pattern = "*lazygit",
+        callback = git_refresh,
+      })
+    end,
   },
 
   -- Fuzzy finder. Telescope
