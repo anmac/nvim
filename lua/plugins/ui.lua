@@ -258,6 +258,7 @@ return {
       filetypes = {
         "*",
         "!lazy",
+        "!neo-tree",
         css = { names = true },
         scss = { names = true },
       },
