@@ -176,6 +176,8 @@ return {
         desc = "Fuzzily search in current buffer",
       },
       { "<leader>fG", LazyVim.telescope("live_grep"), desc = "Grep (Root Dir)" },
+      { "<leader>fr", LazyVim.telescope("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
+      { "<leader>fR", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       -- git
       { "<leader>gt", "<cmd>Telescope git_branches<cr>", desc = "Branches" },
     },
