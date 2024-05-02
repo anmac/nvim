@@ -48,7 +48,7 @@ keymap("i", "<C-l>", "<Right>", opts())
 keymap("n", "J", "mzJ`z", opts())
 
 -- Select All
-keymap("n", "<C-a>", "ggVG", opts("Select All"))
+keymap("n", "<leader><C-a>", "ggVG", opts("Select All"))
 
 -- Diagnostic
 keymap("n", "gl", function()
