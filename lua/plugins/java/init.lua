@@ -5,6 +5,9 @@ return {
     "nvim-java/nvim-java-core",
     "nvim-java/nvim-java-test",
     "nvim-java/nvim-java-dap",
+    "MunifTanjim/nui.nvim",
+    "neovim/nvim-lspconfig",
+    "mfussenegger/nvim-dap",
     {
       "williamboman/mason.nvim",
       opts = {
@@ -40,6 +43,6 @@ return {
   opts = {
     java_debug_adapter = { enable = true },
     jdk = { auto_install = false },
-    notifications = { dap = false },
+    notifications = { dap = true },
   },
 }
