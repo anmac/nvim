@@ -175,8 +175,6 @@ return {
       opts["sections"].lualine_y = {}
       opts["sections"].lualine_z = { "progress" }
       opts["extensions"] = { "fugitive", "lazy", "man", "nvim-dap-ui" }
-
-      return opts
     end,
   },
 
@@ -247,7 +245,6 @@ return {
       opts.messages = { view_search = false }
       opts.lsp.hover = { enabled = true, silent = true }
       opts.presets.lsp_doc_border = true
-      return opts
     end,
   },
 

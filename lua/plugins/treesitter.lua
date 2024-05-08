@@ -46,8 +46,6 @@ return {
       }
 
       opts.autotag = { enable = true }
-
-      return opts
     end,
   },
 
