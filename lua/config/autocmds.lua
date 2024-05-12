@@ -24,8 +24,9 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 
 -- Enable autoformat for lua files
 vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = augroup("formatting"),
   pattern = { "lua" },
   callback = function()
-    vim.b.autoformat = true
+    vim.g.autoformat = true
   end,
 })
