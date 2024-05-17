@@ -8,6 +8,22 @@ return {
       -- disable a keymap
       keys[9] = { "<c-K>", false }
     end,
+    opts = function(_, opts)
+      opts.diagnostics.float = {
+        focusable = true,
+        border = "rounded",
+        scope = "cursor",
+        serverity_sort = true,
+        source = "if_many",
+      }
+      opts.codelens = { enabled = true }
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = "rounded",
+      })
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+        border = "rounded",
+      })
+    end,
   },
 
   -- mason
