@@ -19,13 +19,17 @@ end
 -- Disable default global keymaps
 vim.keymap.del("n", "<S-h>")
 vim.keymap.del("n", "<S-l>")
+vim.keymap.del("n", "<leader>qq")
+vim.keymap.del("n", "<c-/>")
+vim.keymap.del("n", "<c-_>")
+vim.keymap.del("t", "<c-/>")
+vim.keymap.del("t", "<c-_>")
 vim.keymap.del("n", "<leader>ww")
 vim.keymap.del("n", "<leader>wd")
 vim.keymap.del("n", "<leader>w-")
 vim.keymap.del("n", "<leader>w|")
 vim.keymap.del("n", "<leader>-")
 vim.keymap.del("n", "<leader>|")
-vim.keymap.del("n", "<leader>qq")
 vim.keymap.del("n", "<leader><tab>l")
 vim.keymap.del("n", "<leader><tab>f")
 vim.keymap.del("n", "<leader><tab><tab>")
@@ -54,3 +58,12 @@ keymap("n", "<leader><C-a>", "ggVG", opts("Select All"))
 keymap("n", "gl", function()
   vim.diagnostic.open_float({ scope = "line" })
 end, opts("Line Diagnostic"))
+
+-- floating terminal
+local lazyterm = function() LazyVim.terminal(nil, { cwd = LazyVim.root() }) end
+keymap("n", "<c-\\>", lazyterm, opts("Terminal (Root Dir)"))
+keymap("n", "<c-_>", lazyterm, opts("which_key_ignore"))
+
+-- Terminal Mappings
+keymap("t", "<c-\\>", "<cmd>close<cr>", opts("Hide Terminal"))
+keymap("t", "<c-_>", "<cmd>close<cr>", opts("which_key_ignore"))
