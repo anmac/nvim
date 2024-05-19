@@ -3,7 +3,6 @@ return {
   -- bufferline
   {
     "akinsho/bufferline.nvim",
-    version = "4.5.3",
     keys = {
       { "<S-h>", false },
       { "<S-l>", false },
@@ -182,7 +181,6 @@ return {
   -- indent guides for neovim
   {
     "lukas-reineke/indent-blankline.nvim",
-    version = "3.5.4",
     opts = function()
       local rainbow_highlights = {
         "RainbowDelimiterRed",
