@@ -39,4 +39,16 @@ return {
       vim.list_extend(opts.ensure_installed, { "biome", "google-java-format" })
     end,
   },
+
+  -- support for file operations using built-in LSP
+  {
+    "antosha417/nvim-lsp-file-operations",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-neo-tree/neo-tree.nvim",
+    },
+    config = function()
+      require("lsp-file-operations").setup()
+    end,
+  },
 }
