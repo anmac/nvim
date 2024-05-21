@@ -17,4 +17,24 @@ return {
       vim.api.nvim_set_hl(0, "Codeium", { fg = "#6fe8d7" })
     end,
   },
+
+  -- The official Neovim plugin for Supermaven
+  {
+    "supermaven-inc/supermaven-nvim",
+    opts = {
+      keymaps = {
+        accept_suggestion = "<Right>",
+        clear_suggestion = "<C-]>",
+        accept_word = "<C-j>",
+      },
+      ignore_filetypes = {
+        ["DressingInput"] = true,
+        ["fugitive"] = true,
+        ["toggleterm"] = true,
+        ["TelescopePrompt"] = true,
+        ["neo-tree-popup"] = true,
+        ["nofile"] = true,
+      },
+    },
+  },
 }
