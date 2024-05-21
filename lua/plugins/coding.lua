@@ -29,10 +29,6 @@ return {
       opts.mapping = cmp.mapping.preset.insert({
         ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
       })
 
@@ -61,47 +57,6 @@ return {
       opts.experimental = nil
       opts.view = { entries = { name = "custom", selection_order = "near_cursor" } }
       opts.window = { documentation = cmp.config.window.bordered() }
-
-      -- If you want insert `(` after select function or method item
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-    end,
-  },
-
-  -- snippets
-  {
-    "L3MON4D3/LuaSnip",
-    dependencies = {
-      {
-        "nvim-cmp",
-        dependencies = {
-          "saadparwaiz1/cmp_luasnip",
-        },
-        opts = function(_, opts)
-          local luasnip = require("luasnip")
-          local cmp = require("cmp")
-
-          opts.mapping = vim.tbl_extend("force", opts.mapping, {
-            ["<Tab>"] = cmp.mapping(function(fallback)
-              if luasnip.locally_jumpable(1) then
-                luasnip.jump(1)
-              else
-                fallback()
-              end
-            end, { "i", "s" }),
-            ["<S-Tab>"] = cmp.mapping(function(fallback)
-              if luasnip.locally_jumpable(-1) then
-                luasnip.jump(-1)
-              else
-                fallback()
-              end
-            end, { "i", "s" }),
-          })
-        end,
-      },
-    },
-    keys = function()
-      return {}
     end,
   },
 }
