@@ -3,8 +3,8 @@ return {
   -- catppuccin
   {
     "catppuccin/nvim",
+    lazy = true,
     name = "catppuccin",
-    priority = 1000,
     opts = {
       term_colors = true,
       styles = {
@@ -73,7 +73,7 @@ return {
   -- tokyonight
   {
     "folke/tokyonight.nvim",
-    enabled = false,
+    lazy = true,
     opts = {
       style = "moon",
       styles = {
@@ -97,7 +97,7 @@ return {
   -- gruvbox
   {
     "ellisonleao/gruvbox.nvim",
-    enabled = false,
+    lazy = true,
     opts = {
       undercurl = false,
       underline = false,
