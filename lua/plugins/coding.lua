@@ -4,6 +4,9 @@ return {
   {
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-cmdline" },
+    keys = function()
+      return {}
+    end,
     opts = function(_, opts)
       vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#9cdcfe", bg = "NONE" })
       vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpIntemAbbrMatch" })
