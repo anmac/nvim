@@ -23,7 +23,8 @@ return {
         },
         separator_style = "thin",
       },
-      highlights = require("catppuccin.groups.integrations.bufferline").get(),
+      highlights = LazyVim.is_loaded("catppuccin") and require("catppuccin.groups.integrations.bufferline").get()
+        or nil,
     },
   },
 
