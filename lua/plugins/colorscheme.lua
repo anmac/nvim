@@ -107,11 +107,48 @@ return {
       invert_intend_guides = true,
       inverse = true, -- invert background for search, diffs, statuslines and errors
       contrast = "hard", -- can be "hard", "soft" or empty string
+      palette_overrides = { dark0_hard = "#151723" },
       overrides = {
         NonText = { fg = "#50545d" },
         LineNr = { fg = "#6d707c" },
-        CursorLineNr = { fg = "#5eacd3" },
         ["@parameter"] = { italic = true },
+
+        Comment = { fg = "#81878f", italic = true, bold = true },
+        ContextVt = { fg = "#878788" },
+        Define = { link = "GruvboxPurple" },
+        DiagnosticVirtualTextWarn = { fg = "#dfaf87" },
+        Macro = { link = "GruvboxPurple" },
+        ["@constant.builtin"] = { link = "GruvboxPurple" },
+        ["@namespace.latex"] = { link = "Include" },
+        ["@namespace.rust"] = { link = "Include" },
+        ["@storageclass.lifetime"] = { link = "GruvboxAqua" },
+        ["@text.note"] = { link = "TODO" },
+
+        -- fold
+        FoldColumn = { fg = "#fe8019", bg = "#0E1018" },
+        Folded = { fg = "#fe8019", bg = "#3c3836", italic = true },
+        SignColumn = { bg = "#fe8019" },
+
+        -- new git colors
+        DiffAdd = { bold = true, reverse = false, fg = "", bg = "#2a4333" },
+        DiffChange = { bold = true, reverse = false, fg = "", bg = "#333841" },
+        DiffDelete = { bold = true, reverse = false, fg = "#442d30", bg = "#442d30" },
+        DiffText = { bold = true, reverse = false, fg = "", bg = "#213352" },
+
+        -- statusline
+        CursorLineNr = { fg = "#5eacd3", bg = "" },
+        GruvboxAquaSign = { fg = "#8EC07C", bg = "" },
+        GruvboxBlueSign = { fg = "#83a598", bg = "" },
+        GruvboxGreenSign = { fg = "#b8bb26", bg = "" },
+        GruvboxOrangeSign = { fg = "#dfaf87", bg = "" },
+        GruvboxRedSign = { fg = "#fb4934", bg = "" },
+        StatusLine = { bg = "#ffffff", fg = "#0E1018" },
+        StatusLineNC = { bg = "#3c3836", fg = "#0E1018" },
+        WilderAccent = { fg = "#f4468f", bg = "" },
+        WilderMenu = { fg = "#ebdbb2", bg = "" },
+
+        -- neorg
+        ["@neorg.markup.inline_macro"] = { link = "GruvboxGreen" },
       },
       dim_inactive = false,
       transparent_mode = false,
