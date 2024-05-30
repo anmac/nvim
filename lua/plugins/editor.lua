@@ -123,6 +123,23 @@ return {
   -- Fuzzy finder. Telescope
   {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+      {
+        "danielfalk/smart-open.nvim",
+        branch = "0.2.x",
+        dependencies = { "kkharji/sqlite.lua" },
+        opts = { match_algorithm = "fzf" },
+        keys = {
+          {
+            "<leader><space>",
+            function()
+              require("telescope").extensions.smart_open.smart_open()
+            end,
+            desc = "Smart Open",
+          },
+        },
+      },
+    },
     keys = {
       { "<leader>/", false },
       { "<leader><space>", false },
@@ -188,6 +205,7 @@ return {
       local telescope = require("telescope")
       telescope.setup(opts)
       pcall(telescope.load_extension, "fzf")
+      pcall(telescope.load_extension, "smart_open")
     end,
   },
 
