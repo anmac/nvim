@@ -292,6 +292,31 @@ return {
     },
   },
 
+  -- Visualize and resolve Git conflicts
+  {
+    "akinsho/git-conflict.nvim",
+    version = "*",
+    dependencies = {
+      {
+        "yorickpeterse/nvim-pqf",
+        config = function()
+          require("pqf").setup()
+        end,
+      },
+    },
+    keys = {
+      { "<leader>gml", "<cmd>GitConflictListQf<cr>", desc = "Git Merge List" },
+    },
+    opts = {
+      disable_diagnostics = true,
+    },
+    config = function(_, opts)
+      require("git-conflict").setup(opts)
+      vim.cmd([[highlight DiffAdd guibg=#405d7e]])
+      vim.cmd([[highlight DiffText guibg=#314753]])
+    end,
+  },
+
   -- the undo history visualizer for VIM
   {
     "mbbill/undotree",
