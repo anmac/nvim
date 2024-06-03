@@ -221,6 +221,7 @@ return {
         mode = { "n", "v" },
         ["<leader>q"] = { "<cmd>q<cr>", "Quit" },
         ["<leader>w"] = { "<cmd>w<cr>", "Save" },
+        ["<leader>gm"] = { name = "+merge" },
       },
     },
   },
@@ -281,8 +282,13 @@ return {
   -- Fugitive: A git wrapper so awesome, it should be illegal
   {
     "tpope/vim-fugitive",
+    event = "BufEnter",
     keys = {
       { "<leader>gB", "<cmd>Git blame<cr>", desc = "Blame Document" },
+      { "<leader>gC", "<cmd>Git commit<cr>", desc = "Commit Changes" },
+      { "<leader>gW", "<cmd>Gwrite!<cr>", desc = "Git Conflict: Choose The Whole File" },
+      { "<leader>gw", "<cmd>Gwrite<cr>", desc = "Write Git Changes" },
+      { "<leader>gmL", "<cmd>Gvdiffsplit!<cr>", desc = "Merge Conflicts Resolution" },
     },
   },
 
