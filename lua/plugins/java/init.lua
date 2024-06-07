@@ -7,7 +7,18 @@ return {
     "nvim-java/nvim-java-test",
     "nvim-java/nvim-java-dap",
     "MunifTanjim/nui.nvim",
-    "neovim/nvim-lspconfig",
+    {
+      "neovim/nvim-lspconfig",
+      opts = {
+        servers = {
+          jdtls = {
+            handlers = {
+              ["$/progress"] = function() end,
+            },
+          },
+        },
+      },
+    },
     "mfussenegger/nvim-dap",
     {
       "williamboman/mason.nvim",
@@ -28,22 +39,5 @@ return {
         },
       },
     },
-    {
-      "neovim/nvim-lspconfig",
-      opts = {
-        servers = {
-          jdtls = {
-            handlers = {
-              ["$/progress"] = function() end,
-            },
-          },
-        },
-      },
-    },
-  },
-  opts = {
-    java_debug_adapter = { enable = true },
-    jdk = { auto_install = false },
-    notifications = { dap = true },
   },
 }
