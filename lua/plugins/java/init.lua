@@ -12,9 +12,16 @@ return {
       opts = {
         servers = {
           jdtls = {
+            autostart = true,
+            filetypes = { "java", "jsp" },
+            single_file_support = true,
             handlers = {
               ["$/progress"] = function() end,
             },
+            on_attach = function()
+              vim.lsp.codelens.refresh()
+            end,
+            capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
           },
         },
       },
@@ -34,7 +41,9 @@ return {
       opts = {
         handlers = {
           ["jdtls"] = function()
-            require("java").setup()
+            require("java").setup({
+              jdk = { auto_install = false },
+            })
           end,
         },
       },
