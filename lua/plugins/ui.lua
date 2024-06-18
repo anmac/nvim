@@ -245,7 +245,8 @@ return {
     opts = function(_, opts)
       opts.messages = { view_search = false }
       opts.lsp.progress = { enabled = false }
-      opts.lsp.hover = { enabled = true, silent = true }
+      opts.lsp.hover = { enabled = true, silent = true, opts = { border = "rounded" } }
+      opts.lsp.signature = { enabled = true, opts = { border = "rounded" } }
       opts.presets.lsp_doc_border = true
     end,
   },
