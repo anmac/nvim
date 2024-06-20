@@ -236,14 +236,11 @@ return {
         delete = { text = "" },
         topdelete = { text = "" },
         changedelete = { text = "" },
-        untracked = { text = "┃" },
+        untracked = { text = "┆" },
       },
       attach_to_untracked = true,
       current_line_blame = true,
-      current_line_blame_opts = {
-        delay = 500,
-      },
-      current_line_blame_formatter_opts = { relative_time = true },
+      current_line_blame_opts = { delay = 500 },
       preview_config = { border = "rounded" },
       on_attach = function(buffer)
         local gs = package.loaded.gitsigns
