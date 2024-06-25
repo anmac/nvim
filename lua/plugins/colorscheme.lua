@@ -99,8 +99,6 @@ return {
     "ellisonleao/gruvbox.nvim",
     lazy = true,
     opts = {
-      undercurl = false,
-      underline = false,
       invert_selection = true,
       invert_signs = false,
       invert_tabline = true,
@@ -112,6 +110,9 @@ return {
         NonText = { fg = "#50545d" },
         LineNr = { fg = "#6d707c" },
         ["@parameter"] = { italic = true },
+        ["@type.java"] = { link = "GruvboxAqua" },
+        ["@variable.parameter.java"] = { italic = true },
+        ["@lsp.type.modifier.java"] = { link = "GruvboxOrange" },
 
         Comment = { fg = "#81878f", italic = true, bold = true },
         ContextVt = { fg = "#878788" },
