@@ -2,7 +2,6 @@
 local keymap = vim.keymap.set
 
 local opts = function(description)
-  description = description or nil
   return { noremap = true, silent = true, desc = description }
 end
 
@@ -30,6 +29,7 @@ vim.keymap.del("n", "<leader>w-")
 vim.keymap.del("n", "<leader>w|")
 vim.keymap.del("n", "<leader>-")
 vim.keymap.del("n", "<leader>|")
+vim.keymap.del("n", "<leader>wm")
 vim.keymap.del("n", "<leader><tab>l")
 vim.keymap.del("n", "<leader><tab>f")
 vim.keymap.del("n", "<leader><tab><tab>")
@@ -60,10 +60,17 @@ keymap("n", "gl", function()
 end, opts("Line Diagnostic"))
 
 -- floating terminal
-local lazyterm = function() LazyVim.terminal(nil, { cwd = LazyVim.root() }) end
+local lazyterm = function()
+  LazyVim.terminal(nil, { cwd = LazyVim.root() })
+end
 keymap("n", "<c-\\>", lazyterm, opts("Terminal (Root Dir)"))
 keymap("n", "<c-_>", lazyterm, opts("which_key_ignore"))
 
 -- Terminal Mappings
 keymap("t", "<c-\\>", "<cmd>close<cr>", opts("Hide Terminal"))
 keymap("t", "<c-_>", "<cmd>close<cr>", opts("which_key_ignore"))
+
+-- Windows
+keymap("n", "<leader>m", function()
+  LazyVim.toggle.maximize()
+end, { desc = "Maximize Toggle" })

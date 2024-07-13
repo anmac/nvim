@@ -217,11 +217,13 @@ return {
       plugins = { spelling = true },
       window = { border = "rounded" },
       layout = { align = "center" },
-      defaults = {
-        mode = { "n", "v" },
-        ["<leader>q"] = { "<cmd>q<cr>", "Quit" },
-        ["<leader>w"] = { "<cmd>w<cr>", "Save" },
-        ["<leader>gm"] = { name = "+merge" },
+      spec = {
+        {
+          mode = { "n", "v" },
+          { "<leader>q", "<cmd>q<cr>", desc = "Quit" },
+          { "<leader>w", "<cmd>w<cr>", desc = "Save" },
+          { "<leader>gm", group = "+merge" },
+        },
       },
     },
   },
