@@ -79,5 +79,4 @@
   "vim-dadbod-ui": { "branch": "master", "commit": "f74a31e8c6c5a9dccc63450a09d5cd64a9294330" },
   "vim-fugitive": { "branch": "master", "commit": "8c8cdf4405cb8bdb70dd9812a33bb52363a87dbc" },
   "vim-tmux-navigator": { "branch": "master", "commit": "5b3c701686fb4e6629c100ed32e827edf8dad01e" },
-  "which-key.nvim": { "branch": "main", "commit": "f7c403e58a7e51d9e77a67c853bcf8a78964b974" }
-}
+  "which-key.nvim": { "branch": "main", "commit": "b55a568ae69724e334aec3ef291ea4e1768ba47a" }

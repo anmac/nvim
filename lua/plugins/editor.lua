@@ -214,8 +214,9 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
+      preset = "helix",
+      delay = 300,
       plugins = { spelling = true },
-      window = { border = "rounded" },
       layout = { align = "center" },
       spec = {
         {
