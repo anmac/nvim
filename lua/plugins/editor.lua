@@ -292,6 +292,16 @@ return {
     },
   },
 
+  -- A blazingly fast git branch viewer
+  {
+    "rbong/vim-flog",
+    lazy = true,
+    cmd = { "Flog", "Flogsplit", "Floggit" },
+    dependencies = {
+      "tpope/vim-fugitive",
+    },
+  },
+
   -- Visualize and resolve Git conflicts
   {
     "akinsho/git-conflict.nvim",
