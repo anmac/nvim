@@ -16,6 +16,10 @@ end
 --   command_mode = "c",
 
 -- Disable default global keymaps
+vim.keymap.del("n", "j")
+vim.keymap.del("x", "j")
+vim.keymap.del("n", "k")
+vim.keymap.del("x", "k")
 vim.keymap.del("n", "<S-h>")
 vim.keymap.del("n", "<S-l>")
 vim.keymap.del("n", "<leader>qq")
