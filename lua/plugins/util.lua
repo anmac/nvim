@@ -43,6 +43,9 @@ return {
     end,
   },
 
+  -- Automatically adjusts 'shiftwidth' and 'expandtab'
+  { "tpope/vim-sleuth" },
+
   -- seamless navigation between tmux panes and vim splits
   {
     "christoomey/vim-tmux-navigator",
