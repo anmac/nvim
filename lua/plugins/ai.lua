@@ -3,6 +3,7 @@ return {
   -- The official Neovim plugin for Supermaven
   {
     "supermaven-inc/supermaven-nvim",
+    enabled = false,
     opts = {
       ignore_filetypes = {
         ["DressingInput"] = true,
