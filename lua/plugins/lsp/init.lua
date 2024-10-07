@@ -8,34 +8,25 @@ return {
       -- disable a keymap
       keys[9] = { "<c-K>", false }
     end,
-    opts = function(_, opts)
-      opts.diagnostics.float = {
-        focusable = true,
-        border = "rounded",
-        scope = "cursor",
-        serverity_sort = true,
-        source = "if_many",
-      }
-    end,
   },
 
   -- mason
   {
     "williamboman/mason.nvim",
-    opts = function(_, opts)
-      opts.ui = {
+    opts = {
+      ui = {
         border = "rounded",
         width = 0.6,
         height = 0.8,
-      }
-      opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, { "biome", "google-java-format" })
-    end,
+      },
+      ensure_installed = { "biome", "google-java-format" },
+    },
   },
 
   -- support for file operations using built-in LSP
   {
     "antosha417/nvim-lsp-file-operations",
+    enabled = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-neo-tree/neo-tree.nvim",
