@@ -8,7 +8,7 @@ end
 vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
   group = augroup("window_leave"),
   callback = function()
-    vim.api.nvim_exec("let b:winview = winsaveview()", false)
+    vim.api.nvim_exec2("let b:winview = winsaveview()", {})
   end,
 })
 
@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   group = augroup("window_enter"),
   callback = function()
     if vim.api.nvim_eval("exists('b:winview')") == 1 then
-      vim.api.nvim_exec("call winrestview(b:winview)", false)
+      vim.api.nvim_exec2("call winrestview(b:winview)", {})
     end
   end,
 })
