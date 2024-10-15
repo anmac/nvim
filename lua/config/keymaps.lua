@@ -42,7 +42,7 @@ vim.keymap.del("n", "<leader>|")
 -- vim.keymap.del("n", "<leader><tab>[")
 
 -- Write/Save and Quit
-keymap("n", "<leader>w", "<cmd>w<cr>", opts("Save/Windows"))
+keymap("n", "<leader>w", "<cmd>w<cr>", opts("Save"))
 keymap("n", "<leader>q", "<cmd>q<cr>", opts("Quit"))
 keymap("n", "<leader>Q", "<cmd>qa<cr>", opts("Quit All"))
 
