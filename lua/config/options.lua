@@ -50,6 +50,9 @@ local options = {
   -- 18 the swap file
   swapfile = false,
 
+  -- 21 running make and jumping to errors (quickfix)
+  grepprg = "rg --vimgrep -uu",
+
   -- 24 various
   sessionoptions = {
     "buffers",
