@@ -8,6 +8,17 @@ return {
       -- disable a keymap
       keys[9] = { "<c-K>", false }
     end,
+    opts = {
+      diagnostics = {
+        float = {
+          focusable = true,
+          border = "rounded",
+          scope = "cursor",
+          severity_sort = true,
+          source = "if_many",
+        },
+      },
+    },
   },
 
   -- mason
