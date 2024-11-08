@@ -3,6 +3,11 @@ return {
   -- file explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
+    keys = {
+      { "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
+      { "<leader>e", false },
+      { "<leader>E", false },
+    },
     opts = {
       close_if_last_window = true,
       default_source = "last",
@@ -46,6 +51,7 @@ return {
             },
           },
           ["Z"] = "expand_all_nodes",
+          ["\\"] = "close_window",
         },
       },
       filesystem = {
@@ -89,9 +95,19 @@ return {
       },
     },
     keys = {
-      { "<leader>/", false },
-      { "<leader><space>", false },
       -- find
+      { "<leader><space>", false },
+      {
+        "<leader>/",
+        function()
+          -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+          require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+            winblend = 10,
+            previewer = false,
+          }))
+        end,
+        desc = "Fuzzily search in current buffer",
+      },
       {
         "<C-p>",
         function()
@@ -104,19 +120,14 @@ return {
         end,
         desc = "Buffers",
       },
+      { "<leader>fG", ":copen | :silent :grep ", desc = "Ripgrep (include git-files)" },
       {
-        "<leader>\\",
+        "<leader>fn",
         function()
-          require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_ivy({
-            winblend = 10,
-            previewer = true,
-          }))
+          require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
         end,
-        desc = "Fuzzily search in current buffer",
+        desc = "[S]earch [N]eovim files",
       },
-      { "<leader>fG", LazyVim.pick("live_grep"), desc = "Grep (Root Dir)" },
-      { "<leader>fr", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
-      { "<leader>fR", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       -- git
       { "<leader>gt", "<cmd>Telescope git_branches<cr>", desc = "Branches" },
     },
@@ -168,8 +179,6 @@ return {
       spec = {
         {
           mode = { "n", "v" },
-          { "<leader>q", "<cmd>q<cr>", desc = "Quit" },
-          { "<leader>w", "<cmd>w<cr>", desc = "Save" },
           { "<leader>gm", group = "+merge" },
         },
       },
@@ -179,6 +188,9 @@ return {
   -- git signs highlights text that has changed since the list git commit
   {
     "lewis6991/gitsigns.nvim",
+    keys = {
+      { "<leader>ghP", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview Hunk Popup" },
+    },
     opts = {
       signs = {
         add = { text = "┃" },
