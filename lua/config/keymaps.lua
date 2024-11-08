@@ -58,6 +58,12 @@ keymap("n", "J", "mzJ`z", opts())
 -- Select All
 keymap("n", "<leader><C-a>", "ggVG", opts("Select All"))
 
+-- jq tool
+keymap("n", "<leader>cj", "<cmd>%!jq<cr>", opts("Format JSON"))
+keymap("n", "<leader>cJ", "<cmd>%!jq --compact-output<cr>", opts("Compact JSON"))
+keymap("v", "<leader>cj", ":'<,'>!jq<cr>", opts("Format JSON"))
+keymap("v", "<leader>cJ", ":'<,'>!jq --compact-output<cr>", opts("Compact JSON"))
+
 -- Diagnostic
 keymap("n", "gl", function()
   vim.diagnostic.open_float({ scope = "line" })
