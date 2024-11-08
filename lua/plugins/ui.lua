@@ -9,10 +9,6 @@ return {
     },
     opts = {
       options = {
-        right_mouse_command = "vertical sbuffer %d",
-        middle_mouse_command = function(n)
-          require("mini.bufremove").delete(n, false)
-        end,
         indicator = { icon = "┃", style = "icon" },
         offsets = {
           {
@@ -23,8 +19,6 @@ return {
         },
         separator_style = "thin",
       },
-      highlights = LazyVim.is_loaded("catppuccin") and require("catppuccin.groups.integrations.bufferline").get()
-        or nil,
     },
   },
 
