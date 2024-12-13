@@ -75,98 +75,98 @@ return {
   },
 
   -- Fuzzy finder. Telescope
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-      {
-        "danielfalk/smart-open.nvim",
-        branch = "0.2.x",
-        dependencies = { "kkharji/sqlite.lua" },
-        opts = { match_algorithm = "fzf" },
-        keys = {
-          {
-            "<leader><space>",
-            function()
-              require("telescope").extensions.smart_open.smart_open()
-            end,
-            desc = "Smart Open",
-          },
-        },
-      },
-    },
-    keys = {
-      -- find
-      { "<leader><space>", false },
-      {
-        "<leader>/",
-        function()
-          -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-          require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-            winblend = 10,
-            previewer = false,
-          }))
-        end,
-        desc = "Fuzzily search in current buffer",
-      },
-      {
-        "<C-p>",
-        function()
-          require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({
-            initial_mode = "normal",
-            previewer = false,
-            sort_lastused = true,
-            sort_mru = true,
-          }))
-        end,
-        desc = "Buffers",
-      },
-      { "<leader>fG", ":copen | :silent :grep ", desc = "Ripgrep (include git-files)" },
-      {
-        "<leader>fn",
-        function()
-          require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
-        end,
-        desc = "[S]earch [N]eovim files",
-      },
-      -- git
-      { "<leader>gt", "<cmd>Telescope git_branches<cr>", desc = "Branches" },
-    },
-    opts = function(_, opts)
-      local actions = require("telescope.actions")
-      local action_layout = require("telescope.actions.layout")
-
-      opts.defaults = opts.defaults or {}
-      opts.defaults.path_display = { "filename_first" }
-
-      if type(opts.defaults.mappings.i) == "table" then
-        opts.defaults.mappings.i = vim.tbl_extend("force", opts.defaults.mappings.i, {
-          ["<C-j>"] = actions.move_selection_next,
-          ["<C-k>"] = actions.move_selection_previous,
-          ["<C-u>"] = actions.preview_scrolling_up,
-          ["<C-d>"] = actions.preview_scrolling_down,
-          ["<C-h>"] = actions.preview_scrolling_left,
-          ["<C-l>"] = actions.preview_scrolling_right,
-          ["<M-p>"] = action_layout.toggle_preview,
-        })
-      end
-
-      if type(opts.defaults.mappings.n) == "table" then
-        opts.defaults.mappings.n = vim.tbl_extend("force", opts.defaults.mappings.n, {
-          ["<M-p>"] = action_layout.toggle_preview,
-        })
-      end
-
-      opts.extensions = {
-        fzf = { fuzzy = false },
-      }
-    end,
-    config = function(_, opts)
-      local telescope = require("telescope")
-      telescope.setup(opts)
-      pcall(telescope.load_extension, "fzf")
-      pcall(telescope.load_extension, "smart_open")
-    end,
-  },
+  -- {
+  --   "nvim-telescope/telescope.nvim",
+  --   dependencies = {
+  --     {
+  --       "danielfalk/smart-open.nvim",
+  --       branch = "0.2.x",
+  --       dependencies = { "kkharji/sqlite.lua" },
+  --       opts = { match_algorithm = "fzf" },
+  --       keys = {
+  --         {
+  --           "<leader><space>",
+  --           function()
+  --             require("telescope").extensions.smart_open.smart_open()
+  --           end,
+  --           desc = "Smart Open",
+  --         },
+  --       },
+  --     },
+  --   },
+  --   keys = {
+  --     -- find
+  --     { "<leader><space>", false },
+  --     {
+  --       "<leader>/",
+  --       function()
+  --         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+  --         require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+  --           winblend = 10,
+  --           previewer = false,
+  --         }))
+  --       end,
+  --       desc = "Fuzzily search in current buffer",
+  --     },
+  --     {
+  --       "<C-p>",
+  --       function()
+  --         require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({
+  --           initial_mode = "normal",
+  --           previewer = false,
+  --           sort_lastused = true,
+  --           sort_mru = true,
+  --         }))
+  --       end,
+  --       desc = "Buffers",
+  --     },
+  --     { "<leader>fG", ":copen | :silent :grep ", desc = "Ripgrep (include git-files)" },
+  --     {
+  --       "<leader>fn",
+  --       function()
+  --         require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
+  --       end,
+  --       desc = "[S]earch [N]eovim files",
+  --     },
+  --     -- git
+  --     { "<leader>gt", "<cmd>Telescope git_branches<cr>", desc = "Branches" },
+  --   },
+  --   opts = function(_, opts)
+  --     local actions = require("telescope.actions")
+  --     local action_layout = require("telescope.actions.layout")
+  --
+  --     opts.defaults = opts.defaults or {}
+  --     opts.defaults.path_display = { "filename_first" }
+  --
+  --     if type(opts.defaults.mappings.i) == "table" then
+  --       opts.defaults.mappings.i = vim.tbl_extend("force", opts.defaults.mappings.i, {
+  --         ["<C-j>"] = actions.move_selection_next,
+  --         ["<C-k>"] = actions.move_selection_previous,
+  --         ["<C-u>"] = actions.preview_scrolling_up,
+  --         ["<C-d>"] = actions.preview_scrolling_down,
+  --         ["<C-h>"] = actions.preview_scrolling_left,
+  --         ["<C-l>"] = actions.preview_scrolling_right,
+  --         ["<M-p>"] = action_layout.toggle_preview,
+  --       })
+  --     end
+  --
+  --     if type(opts.defaults.mappings.n) == "table" then
+  --       opts.defaults.mappings.n = vim.tbl_extend("force", opts.defaults.mappings.n, {
+  --         ["<M-p>"] = action_layout.toggle_preview,
+  --       })
+  --     end
+  --
+  --     opts.extensions = {
+  --       fzf = { fuzzy = false },
+  --     }
+  --   end,
+  --   config = function(_, opts)
+  --     local telescope = require("telescope")
+  --     telescope.setup(opts)
+  --     pcall(telescope.load_extension, "fzf")
+  --     pcall(telescope.load_extension, "smart_open")
+  --   end,
+  -- },
 
   -- which_key
   {

@@ -33,17 +33,4 @@ return {
       ensure_installed = { "biome", "google-java-format" },
     },
   },
-
-  -- support for file operations using built-in LSP
-  {
-    "antosha417/nvim-lsp-file-operations",
-    enabled = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-neo-tree/neo-tree.nvim",
-    },
-    config = function()
-      require("lsp-file-operations").setup()
-    end,
-  },
 }
