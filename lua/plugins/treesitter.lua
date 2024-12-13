@@ -32,20 +32,4 @@ return {
     event = "InsertEnter",
     opts = {},
   },
-
-  -- rainbow delimiters with treesitter
-  {
-    "HiPhish/rainbow-delimiters.nvim",
-    opts = {
-      query = {
-        javascript = "rainbow-parens",
-        tsx = "rainbow-parens",
-        typescript = "rainbow-parens",
-      },
-      blacklist = { "html" },
-    },
-    config = function(_, opts)
-      require("rainbow-delimiters.setup").setup(opts)
-    end,
-  },
 }
