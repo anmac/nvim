@@ -3,35 +3,29 @@ return {
   -- auto-session. A small automated session manager for Neovim
   {
     "rmagatti/auto-session",
-    config = function()
-      require("auto-session").setup({
-        log_level = "error",
-        auto_session_suppress_dirs = {
-          "~/",
-          "~/Applications",
-          "~/Desktop",
-          "~/Documents",
-          "~/Downloads",
-          "~/Music",
-          "~/Pictures",
-          "~/Projects",
-          "~/Videos",
-          "/",
-        },
-        session_lens = {
-          buftypes_to_ignore = {}, -- list of buffer types what should not be deleted from current session
-          load_on_setup = true,
-          theme_conf = { border = true },
-          previewer = false,
-        },
-      })
-      vim.keymap.set(
-        "n",
-        "<leader>fs",
-        require("auto-session.session-lens").search_session,
-        { noremap = true, desc = "Search Session" }
-      )
-    end,
+    lazy = false,
+    keys = {
+      -- Will use Telescope if installed or a vim.ui.select picker otherwise
+      { "<leader>wr", "<cmd>SessionSearch<CR>", desc = "Session search" },
+      { "<leader>ws", "<cmd>SessionSave<CR>", desc = "Save session" },
+      { "<leader>wa", "<cmd>SessionToggleAutoSave<CR>", desc = "Toggle autosave" },
+    },
+    opts = {
+      suppressed_dirs = {
+        "~/",
+        "~/Applications",
+        "~/Desktop",
+        "~/Documents",
+        "~/Downloads",
+        "~/Music",
+        "~/Pictures",
+        "~/Projects",
+        "~/Videos",
+        "/",
+      },
+      use_git_branch = true,
+      lazy_support = true,
+    },
   },
 
   -- modern fold look keeping high performance

@@ -74,3 +74,4 @@ for key, value in pairs(options) do
 end
 
 vim.g.autoformat = false
+vim.g.snacks_animate = false
