@@ -26,10 +26,19 @@ return {
     },
   },
 
-  -- autopairs for neovim
+  -- rainbow delimiters with treesitter
   {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    opts = {},
+    "HiPhish/rainbow-delimiters.nvim",
+    opts = {
+      query = {
+        javascript = "rainbow-parens",
+        tsx = "rainbow-parens",
+        typescript = "rainbow-parens",
+      },
+      blacklist = { "html" },
+    },
+    config = function(_, opts)
+      require("rainbow-delimiters.setup").setup(opts)
+    end,
   },
 }
