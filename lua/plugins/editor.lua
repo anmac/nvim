@@ -168,6 +168,15 @@ return {
   --   end,
   -- },
 
+  {
+    "ibhagwan/fzf-lua",
+    opts = {
+      files = {
+        formatter = "path.filename_first",
+      },
+    },
+  },
+
   -- which_key
   {
     "folke/which-key.nvim",
