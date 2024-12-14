@@ -1,80 +1,41 @@
 return {
 
-  -- auto completion
+  -- Performant, batteries-included completion plugin for Neovim
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = { "hrsh7th/cmp-cmdline" },
-    keys = function()
-      return {}
-    end,
-    opts = function(_, opts)
-      vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#9cdcfe", bg = "NONE" })
-      vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpIntemAbbrMatch" })
-      vim.api.nvim_set_hl(0, "CmpItemMenu", { link = "@comment" })
+    "saghen/blink.cmp",
+    opts = {
+      kemap = {
+        preset = "enter",
+        ["<C-space>"] = {
+          function(cmp)
+            cmp.show({ providers = { "snippets" } })
+          end,
+        },
 
-      local cmp = require("cmp")
+        ["<C-e>"] = { "hide", "fallback" },
+        ["<CR>"] = { "accept", "fallback" },
 
-      opts.enabled = function()
-        local buftype = vim.api.nvim_buf_get_option(0, "buftype")
-        if buftype == "prompt" then
-          return false
-        end
-        -- Keep command mode completion enabled when cursor is in a comment
-        if vim.api.nvim_get_mode().mode == "c" then
-          return true
-        else
-          local context = require("cmp.config.context")
-          -- Disable completion in comments
-          return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
-        end
-      end
+        ["<Tab>"] = {
+          LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
+          "fallback",
+        },
+        ["<S-Tab>"] = { "snippet_backward", "fallback" },
 
-      opts.mapping = cmp.mapping.preset.insert({
-        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if vim.snippet.active({ direction = 1 }) then
-            vim.snippet.jump(1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if vim.snippet.active({ direction = -1 }) then
-            vim.snippet.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-      })
+        ["<Up>"] = { "select_prev", "fallback" },
+        ["<Down>"] = { "select_next", "fallback" },
+        ["<C-k>"] = { "select_prev", "fallback" },
+        ["<C-j>"] = { "select_next", "fallback" },
+        ["<C-p>"] = { "select_prev", "fallback" },
+        ["<C-n>"] = { "select_next", "fallback" },
 
-      opts.formatting = {
-        fields = { "kind", "abbr", "menu" },
-        format = function(_, item)
-          local icons = require("plugins.core")[1].opts.icons.kinds
-          local label = item.kind
-          -- Kind icon
-          item.kind = icons[item.kind] or ""
-          -- Abbr
-          local function trim(text)
-            local maxLenght = 32
-            if text and text:len() > maxLenght then
-              text = text:sub(1, maxLenght) .. "…"
-            end
-            return text
-          end
-          item.abbr = trim(item.abbr)
-          -- Menu
-          item.menu = label
-          return item
-        end,
-      }
-
-      opts.experimental = nil
-      opts.view = { entries = { name = "custom", selection_order = "near_cursor" } }
-      opts.window = { documentation = cmp.config.window.bordered() }
-    end,
+        ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+      },
+      completion = {
+        list = {
+          selection = "manual",
+        },
+      },
+    },
   },
 }
