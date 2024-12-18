@@ -75,3 +75,5 @@ end
 
 vim.g.autoformat = false
 vim.g.snacks_animate = false
+
+vim.filetype.add({ extension = { tfstate = "json" } })
