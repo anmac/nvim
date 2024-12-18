@@ -209,7 +209,21 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
-      indent = { enabled = false },
+      indent = {
+        enabled = false,
+        char = "▏",
+        only_scope = true,
+        only_current = true,
+        hl = {
+          "RainbowDelimiterRed",
+          "RainbowDelimiterBlue",
+          "RainbowDelimiterCyan",
+          "RainbowDelimiterGreen",
+          "RainbowDelimiterOrange",
+          "RainbowDelimiterViolet",
+          "RainbowDelimiterYellow",
+        },
+      },
     },
   },
 }
