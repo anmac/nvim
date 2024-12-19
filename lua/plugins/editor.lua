@@ -175,6 +175,9 @@ return {
         formatter = "path.filename_first",
       },
     },
+    keys = {
+      { "<leader>gt", "<cmd>FzfLua git_branches<cr>", desc = "Git Branches" },
+    },
   },
 
   -- which_key
