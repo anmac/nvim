@@ -224,11 +224,11 @@ return {
     "tpope/vim-fugitive",
     event = "BufEnter",
     keys = {
-      { "<leader>gB", "<cmd>Git blame<cr>", desc = "Blame Document" },
-      { "<leader>gC", "<cmd>Git commit<cr>", desc = "Commit Changes" },
+      { "<leader>gB", "<cmd>Git blame<cr>", desc = "Git Blame Document" },
+      -- { "<leader>gC", "<cmd>Git commit<cr>", desc = "Commit Changes" },
       { "<leader>gW", "<cmd>Gwrite!<cr>", desc = "Git Conflict: Choose The Whole File" },
       { "<leader>gw", "<cmd>Gwrite<cr>", desc = "Write Git Changes" },
-      { "<leader>gmL", "<cmd>Gvdiffsplit!<cr>", desc = "Merge Conflicts Resolution" },
+      { "<leader>gmL", "<cmd>Gvdiffsplit!<cr>", desc = "(Fugitive) Merge Conflicts Resolution" },
     },
   },
 
@@ -242,29 +242,21 @@ return {
     },
   },
 
-  -- Visualize and resolve Git conflicts
+  -- An interactive and powerful Git interface for Neovim, inspired by Magit
   {
-    "akinsho/git-conflict.nvim",
-    version = "*",
+    "NeogitOrg/neogit",
     dependencies = {
-      {
-        "yorickpeterse/nvim-pqf",
-        config = function()
-          require("pqf").setup()
-        end,
+      "sindrets/diffview.nvim", -- optional - Diff integration for any git rev
+      keys = {
+        { "<leader>gM", "<cmd>DiffviewOpen<cr>", desc = "(Diffview) Merge Conflict" },
       },
     },
     keys = {
-      { "<leader>gml", "<cmd>GitConflictListQf<cr>", desc = "Git Merge List" },
+      { "<leader>gS", "<cmd>Neogit<cr>", desc = "Neogit Open" },
+      { "<leader>gC", "<cmd>Neogit commit<cr>", desc = "Commit Changes" },
+      { "<leader>gp", "<cmd>Neogit pull<cr>", desc = "Git Pull" },
+      { "<leader>gP", "<cmd>Neogit push<cr>", desc = "Git Push" },
     },
-    opts = {
-      disable_diagnostics = true,
-    },
-    config = function(_, opts)
-      require("git-conflict").setup(opts)
-      vim.cmd([[highlight DiffAdd guibg=#405d7e]])
-      vim.cmd([[highlight DiffText guibg=#314753]])
-    end,
   },
 
   -- the undo history visualizer for VIM
