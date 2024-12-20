@@ -4,7 +4,7 @@ return {
   {
     "saghen/blink.cmp",
     opts = {
-      kemap = {
+      keymap = {
         preset = "enter",
         ["<C-space>"] = {
           function(cmp)
