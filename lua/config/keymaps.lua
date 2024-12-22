@@ -69,6 +69,9 @@ keymap("n", "gl", function()
   vim.diagnostic.open_float({ scope = "line" })
 end, opts("Line Diagnostic"))
 
+-- Searching
+keymap("n", "<leader>fG", ":copen | :silent :grep ", opts("Ripgrep (include git-files)"))
+
 -- floating terminal
 -- local lazyterm = function()
 --   LazyVim.terminal(nil, { cwd = LazyVim.root() })
