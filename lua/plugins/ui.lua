@@ -187,7 +187,7 @@ return {
 
   -- the fastest neovim colorizer
   {
-    "NvChad/nvim-colorizer.lua",
+    "catgoose/nvim-colorizer.lua",
     opts = {
       filetypes = {
         "*",
@@ -201,7 +201,7 @@ return {
         css = true,
         css_fn = true,
         tailwind = true,
-        sass = { enable = true },
+        sass = { enable = true, parsers = { "css" } },
       },
     },
   },
