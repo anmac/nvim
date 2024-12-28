@@ -39,6 +39,7 @@ return {
         typescriptreact = { "biome", "prettierd", stop_after_first = true },
         vue = { "prettierd" },
         yaml = { "prettierd" },
+        ["_"] = { "trim_whitespace" },
       },
       formatters = {
         shfmt = { prepend_args = { "-i", "2", "-ci", "-kp" } },
