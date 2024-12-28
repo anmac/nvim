@@ -72,6 +72,15 @@ end, opts("Line Diagnostic"))
 -- Searching
 keymap("n", "<leader>fG", ":copen | :silent :grep ", opts("Ripgrep (include git-files)"))
 
+-- Increment/Decrement
+keymap("n", "+", "<C-a>", opts())
+keymap("n", "-", "<C-x>", opts())
+
+-- New tab
+keymap("n", "te", "<cmd>tabedit<cr>", opts())
+keymap("n", "<tab>", "<cmd>tabnext<cr>", opts())
+keymap("n", "<S-tab>", "<cmd>tabprev<cr>", opts())
+
 -- floating terminal
 -- local lazyterm = function()
 --   LazyVim.terminal(nil, { cwd = LazyVim.root() })
