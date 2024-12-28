@@ -1,0 +1,13 @@
+{
+  "name": "personal-snippets",
+  "description": "Personal snippet directory",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "categories": ["Snippets"],
+  "contributes": {
+    "snippets": [{ "language": ["javascript", "typescript"], "path": "./javascript.json" }]
+  }
+}

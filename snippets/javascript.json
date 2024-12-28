@@ -1,0 +1,7 @@
+{
+  "Export async handler": {
+    "prefix": "handler",
+    "body": ["export const ${1:handler} = async (event, context) => {", "\t$0", "}"],
+    "description": "AWS Lambda handler function."
+  }
+}
