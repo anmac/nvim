@@ -41,4 +41,9 @@ return {
       require("rainbow-delimiters.setup").setup(opts)
     end,
   },
+
+  -- Generic log syntax highlighting and filetype management for Neovim
+  {
+    "fei6409/log-highlight.nvim",
+  },
 }
