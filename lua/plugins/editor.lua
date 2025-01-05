@@ -240,6 +240,9 @@ return {
     dependencies = {
       "tpope/vim-fugitive",
     },
+    keys = {
+      { "<leader>gT", "<cmd>Flog<cr>", desc = "Git Commit Graph" },
+    },
   },
 
   -- An interactive and powerful Git interface for Neovim, inspired by Magit
