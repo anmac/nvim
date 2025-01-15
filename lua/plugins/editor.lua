@@ -171,7 +171,7 @@ return {
   {
     "ibhagwan/fzf-lua",
     opts = {
-      files = {
+      defaults = {
         formatter = "path.filename_first",
       },
     },
