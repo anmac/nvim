@@ -253,9 +253,12 @@ return {
       keys = {
         { "<leader>gM", "<cmd>DiffviewOpen<cr>", desc = "(Diffview) Merge Conflict" },
       },
+      opts = {
+        view = { merge_tool = { layout = "diff3_mixed" } },
+      },
     },
     keys = {
-      { "<leader>gS", "<cmd>Neogit<cr>", desc = "Neogit Open" },
+      { "<leader>gN", "<cmd>Neogit<cr>", desc = "Neogit Open" },
       { "<leader>gC", "<cmd>Neogit commit<cr>", desc = "Commit Changes" },
       { "<leader>gp", "<cmd>Neogit pull<cr>", desc = "Git Pull" },
       { "<leader>gP", "<cmd>Neogit push<cr>", desc = "Git Push" },
