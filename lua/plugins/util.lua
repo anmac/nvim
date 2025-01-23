@@ -22,6 +22,7 @@ return {
         "~/Projects",
         "~/Videos",
         "/",
+        "/tmp",
       },
       use_git_branch = true,
       lazy_support = true,
