@@ -18,6 +18,9 @@ return {
           source = "if_many",
         },
       },
+      inlay_hints = {
+        enabled = false,
+      },
     },
   },
 
