@@ -55,6 +55,10 @@ keymap("i", "<C-l>", "<Right>", opts())
 -- Stay cursor in place
 keymap("n", "J", "mzJ`z", opts())
 
+-- Better clipboard integration
+keymap("x", "p", '"_dP', opts("Paste with no copy"))
+keymap("x", "<leader>p", '"+dP', opts("Paste and copy to clipboard"))
+
 -- Select All
 keymap("n", "<leader><C-a>", "ggVG", opts("Select All"))
 
