@@ -207,6 +207,16 @@ return {
   },
 
   {
+    "echasnovski/mini.icons",
+    lazy = true,
+    opts = {
+      file = {
+        [".gitignore"] = { glyph = "󰊢", hl = "MiniIconsRed" },
+      },
+    },
+  },
+
+  {
     "folke/snacks.nvim",
     opts = {
       picker = {
