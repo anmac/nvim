@@ -221,7 +221,31 @@ return {
     opts = {
       picker = {
         sources = {
-          explorer = { layout = { layout = { position = "right" } } },
+          explorer = {
+            layout = { layout = { position = "right" } },
+            win = {
+              list = {
+                keys = {
+                  ["<ESC>"] = "",
+                  ["w"] = "confirm",
+                  ["l"] = "",
+                  ["h"] = "",
+                  ["C"] = "explorer_close",
+                },
+              },
+            },
+          },
+        },
+        icons = {
+          git = {
+            staged = "●",
+            added = "A",
+            deleted = "D",
+            ignored = "?",
+            modified = "M",
+            renamed = "R",
+            untracked = "U",
+          },
         },
       },
       indent = {
