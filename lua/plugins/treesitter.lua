@@ -45,5 +45,6 @@ return {
   -- Generic log syntax highlighting and filetype management for Neovim
   {
     "fei6409/log-highlight.nvim",
+    ft = "log",
   },
 }
