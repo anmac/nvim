@@ -249,22 +249,22 @@ return {
         },
       },
       indent = {
-        indent = {
-          enabled = false,
+        indent = { enabled = false },
+        scope = {
+          enabled = true,
           char = "▏",
-          only_scope = true,
+          underline = false,
           only_current = true,
           hl = {
             "RainbowDelimiterRed",
+            "RainbowDelimiterYellow",
             "RainbowDelimiterBlue",
             "RainbowDelimiterCyan",
-            "RainbowDelimiterGreen",
             "RainbowDelimiterOrange",
+            "RainbowDelimiterGreen",
             "RainbowDelimiterViolet",
-            "RainbowDelimiterYellow",
           },
         },
-        scope = { enabled = false },
       },
     },
   },
