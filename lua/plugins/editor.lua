@@ -1,78 +1,78 @@
 return {
 
   -- file explorer
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    keys = {
-      { "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
-      { "<leader>e", false },
-      { "<leader>E", false },
-    },
-    opts = {
-      close_if_last_window = true,
-      default_source = "last",
-      source_selector = {
-        winbar = true,
-        show_scrolled_off_parent_node = true,
-        sources = {
-          { source = "filesystem" },
-          { source = "buffers" },
-          { source = "git_status" },
-        },
-        content_layout = "center",
-      },
-      default_component_configs = {
-        container = { enable_character_fade = false },
-        diagnostics = { symbols = { hint = "" } },
-        name = { use_git_status_colors = true },
-        file_size = { enabled = false },
-        type = { enabled = false },
-        last_modified = { enabled = false },
-        symlink_target = { enabled = true },
-      },
-      window = {
-        same_level = true,
-        insert_as = "child",
-        mappings = {
-          ["<space>"] = "noop",
-          ["s"] = "open_split",
-          ["S"] = "noop",
-          ["v"] = "open_vsplit",
-          ["a"] = {
-            "add",
-            config = {
-              show_path = "relative",
-            },
-          },
-          ["A"] = {
-            "add_directory",
-            config = {
-              show_path = "relative",
-            },
-          },
-          ["Z"] = "expand_all_nodes",
-          ["\\"] = "close_window",
-        },
-      },
-      filesystem = {
-        window = {
-          fuzzy_finder_mappings = {
-            ["<C-j>"] = "move_cursor_down",
-            ["<C-k>"] = "move_cursor_up",
-          },
-        },
-        filtered_items = {
-          hide_dotfiles = false,
-          hide_gitignored = true,
-          hide_by_name = { ".git" },
-        },
-        follow_current_file = {
-          enabled = true,
-          leave_dirs_open = true,
-        },
-      },
-    },
-  },
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   keys = {
+  --     { "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
+  --     { "<leader>e", false },
+  --     { "<leader>E", false },
+  --   },
+  --   opts = {
+  --     close_if_last_window = true,
+  --     default_source = "last",
+  --     source_selector = {
+  --       winbar = true,
+  --       show_scrolled_off_parent_node = true,
+  --       sources = {
+  --         { source = "filesystem" },
+  --         { source = "buffers" },
+  --         { source = "git_status" },
+  --       },
+  --       content_layout = "center",
+  --     },
+  --     default_component_configs = {
+  --       container = { enable_character_fade = false },
+  --       diagnostics = { symbols = { hint = "" } },
+  --       name = { use_git_status_colors = true },
+  --       file_size = { enabled = false },
+  --       type = { enabled = false },
+  --       last_modified = { enabled = false },
+  --       symlink_target = { enabled = true },
+  --     },
+  --     window = {
+  --       same_level = true,
+  --       insert_as = "child",
+  --       mappings = {
+  --         ["<space>"] = "noop",
+  --         ["s"] = "open_split",
+  --         ["S"] = "noop",
+  --         ["v"] = "open_vsplit",
+  --         ["a"] = {
+  --           "add",
+  --           config = {
+  --             show_path = "relative",
+  --           },
+  --         },
+  --         ["A"] = {
+  --           "add_directory",
+  --           config = {
+  --             show_path = "relative",
+  --           },
+  --         },
+  --         ["Z"] = "expand_all_nodes",
+  --         ["\\"] = "close_window",
+  --       },
+  --     },
+  --     filesystem = {
+  --       window = {
+  --         fuzzy_finder_mappings = {
+  --           ["<C-j>"] = "move_cursor_down",
+  --           ["<C-k>"] = "move_cursor_up",
+  --         },
+  --       },
+  --       filtered_items = {
+  --         hide_dotfiles = false,
+  --         hide_gitignored = true,
+  --         hide_by_name = { ".git" },
+  --       },
+  --       follow_current_file = {
+  --         enabled = true,
+  --         leave_dirs_open = true,
+  --       },
+  --     },
+  --   },
+  -- },
 
   -- Fuzzy finder. Telescope
   -- {
