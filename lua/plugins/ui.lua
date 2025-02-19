@@ -210,8 +210,20 @@ return {
     "echasnovski/mini.icons",
     lazy = true,
     opts = {
+      directory = {
+        config = { glyph = "󱁿", hl = "MiniIconsAzure" },
+        services = { glyph = "󱁿", hl = "MiniIconsYellow" },
+        shared = { glyph = "󰡰", hl = "MiniIconsPurple" },
+        utils = { glyph = "󱧼", hl = "MiniIconsCyan" },
+      },
+      extension = {
+        md = { glyph = "", hl = "MiniIconsBlue" },
+      },
       file = {
+        [".env"] = { glyph = "", hl = "MiniIconsGrey" },
         [".gitignore"] = { glyph = "󰊢", hl = "MiniIconsRed" },
+        ["README.md"] = { glyph = "", hl = "MiniIconsBlue" },
+        ["pnpm-lock.yaml"] = { glyph = "", hl = "MiniIconsOrange" },
       },
     },
   },
