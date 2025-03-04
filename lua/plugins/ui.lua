@@ -261,7 +261,7 @@ return {
         },
       },
       indent = {
-        indent = { enabled = false },
+        indent = { enabled = false, char = "▏" },
         scope = {
           enabled = true,
           char = "▏",
