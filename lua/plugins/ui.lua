@@ -246,6 +246,8 @@ return {
                 },
               },
             },
+            ignored = true,
+            hidden = true,
           },
         },
         icons = {
@@ -253,7 +255,7 @@ return {
             staged = "●",
             added = "A",
             deleted = "D",
-            ignored = "?",
+            ignored = "",
             modified = "M",
             renamed = "R",
             untracked = "U",
