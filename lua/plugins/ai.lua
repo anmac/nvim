@@ -17,6 +17,7 @@ return {
         ["TelescopePrompt"] = true,
         ["neo-tree-popup"] = true,
         ["nofile"] = true,
+        ["snacks_input"] = true,
       },
     },
   },
