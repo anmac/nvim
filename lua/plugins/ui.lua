@@ -224,6 +224,7 @@ return {
         [".gitignore"] = { glyph = "󰊢", hl = "MiniIconsRed" },
         ["README.md"] = { glyph = "", hl = "MiniIconsBlue" },
         ["pnpm-lock.yaml"] = { glyph = "", hl = "MiniIconsOrange" },
+        ["package-lock.json"] = { glyph = "󰎙", hl = "MiniIconsGreen" },
       },
     },
   },
