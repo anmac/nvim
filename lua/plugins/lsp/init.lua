@@ -7,6 +7,41 @@ return {
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       -- disable a keymap
       keys[9] = { "<c-K>", false }
+      vim.list_extend(keys, {
+        {
+          "<C-p>",
+          function()
+            Snacks.picker.lsp_symbols({
+              filter = {
+                default = {
+                  "Class",
+                  "Constructor",
+                  "Enum",
+                  "Function",
+                  "Method",
+                  "Property",
+                  "Struct",
+                  "Trait",
+                },
+                markdown = false,
+                help = false,
+                lua = {
+                  "Class",
+                  "Constructor",
+                  "Enum",
+                  "Function",
+                  "Method",
+                  "Property",
+                  "Struct",
+                  "Trait",
+                },
+              },
+            })
+          end,
+          desc = "LSP Functions/Methods",
+          has = "documentSymbol",
+        },
+      })
     end,
     opts = {
       diagnostics = {
