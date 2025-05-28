@@ -16,7 +16,9 @@ return {
           NonText = { fg = "#50545d" },
           LineNr = { fg = "#6d707c" },
           CursorLineNr = { fg = "#5eacd3" },
-          ["@parameter"] = { style = { "italic" } },
+          ["@parameter"] = { italic = true },
+          SnacksPickerGitStatusUntracked = { fg = "#8dc18f" },
+          SnacksPickerGitStatusModified = { fg = "#f9e2b0", italic = false },
         }
       end,
       integrations = {
