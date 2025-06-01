@@ -60,4 +60,17 @@ return {
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
+
+  -- A minimal 🤏 HTTP-client 🐼 interface 🖥️ for Neovim ❤️
+  {
+    "mistweaverco/kulala.nvim",
+    opts = {
+      ui = {
+        win_opts = {
+          width = 75,
+        },
+        default_view = "headers_body",
+      },
+    },
+  },
 }
