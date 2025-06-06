@@ -215,6 +215,8 @@ return {
         services = { glyph = "󱁿", hl = "MiniIconsYellow" },
         shared = { glyph = "󰡰", hl = "MiniIconsPurple" },
         utils = { glyph = "󱧼", hl = "MiniIconsCyan" },
+        database = { glyph = "󱋣", hl = "MiniIconsRed" },
+        middlewares = { glyph = "󱞊", hl = "MiniIconsGreen" },
       },
       extension = {
         md = { glyph = "", hl = "MiniIconsBlue" },
