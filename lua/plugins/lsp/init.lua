@@ -56,6 +56,37 @@ return {
       inlay_hints = {
         enabled = false,
       },
+      servers = {
+        yamlls = {
+          settings = {
+            yaml = {
+              customTags = {
+                "!Base64 scalar",
+                "!Cidr scalar",
+                "!And sequence",
+                "!Equals sequence",
+                "!If sequence",
+                "!Not sequence",
+                "!Or sequence",
+                "!Condition scalar",
+                "!FindInMap sequence",
+                "!ForEach sequence",
+                "!GetAtt scalar",
+                "!GetAtt sequence",
+                "!GetAZs scalar",
+                "!ImportValue scalar",
+                "!Join sequence",
+                "!Select sequence",
+                "!Split sequence",
+                "!Sub scalar",
+                "!ToJsonString mapping",
+                "!Transform mapping",
+                "!Ref scalar",
+              },
+            },
+          },
+        },
+      },
     },
   },
 
