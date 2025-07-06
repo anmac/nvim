@@ -249,8 +249,20 @@ return {
                 },
               },
             },
-            ignored = true,
             hidden = true,
+            ignored = true,
+            exclude = { ".git", "node_modules", ".yarn/cache", ".yarn/releases", ".pnpm-store" },
+          },
+          files = {
+            hidden = true,
+            ignored = true,
+            exclude = {
+              "**/.git/*",
+              "**/node_modules/*",
+              "**/.yarn/cache/*",
+              "**/.yarn/releases/*",
+              "**/.pnpm-store/*",
+            },
           },
         },
         icons = {
