@@ -97,8 +97,14 @@ return {
   {
     "ibhagwan/fzf-lua",
     opts = {
+      "hide",
       defaults = {
         formatter = "path.filename_first",
+      },
+      files = {
+        find_opts = [[-type f \! -path '*/.git/*' \! -path '*/node_modules/*' \! -path '*/dist/*']],
+        rg_opts = [[--color=never --hidden --files -g "!.git" -g "!node_modules" -g "!dist"]],
+        fd_opts = [[--color=never --hidden --type f --type l --exclude .git --exclude node_modules --exclude dist]],
       },
     },
     keys = {
