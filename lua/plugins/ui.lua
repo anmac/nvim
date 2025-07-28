@@ -250,8 +250,9 @@ return {
               },
             },
             hidden = true,
-            ignored = true,
-            exclude = { ".git", "node_modules", ".yarn/cache", ".yarn/releases", ".pnpm-store" },
+            ignored = false,
+            -- exclude = { ".git", "node_modules", ".yarn/cache", ".yarn/releases", ".pnpm-store" },
+            exclude = { ".git" },
           },
           files = {
             hidden = true,
