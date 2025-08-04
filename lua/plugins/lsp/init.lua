@@ -58,6 +58,15 @@ return {
       },
       servers = {
         yamlls = {
+          filetypes = {
+            "yaml",
+            "yaml.docker-compose",
+            "yaml.ghaction",
+            "yaml.gitlab",
+            "yaml.bitbucket",
+            "yaml.helm-values",
+            "yaml.cfn",
+          },
           settings = {
             yaml = {
               customTags = {

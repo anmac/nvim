@@ -77,3 +77,12 @@ vim.g.autoformat = false
 vim.g.snacks_animate = false
 
 vim.filetype.add({ extension = { tfstate = "json" } })
+vim.filetype.add({
+  pattern = {
+    [".*/.github/workflows/.*%.ya?ml"] = "yaml.ghaction",
+    [".*/bitbucket%-pipelines%.ya?ml"] = "yaml.bitbucket",
+    [".*/gitlab%-ci%.ya?ml"] = "yaml.gitlab",
+    [".*/template%.ya?ml"] = "yaml.cfn",
+    [".*/cloudformation%.ya?ml"] = "yaml.cfn",
+  },
+})
