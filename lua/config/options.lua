@@ -6,7 +6,7 @@ local options = {
   smartcase = true,
 
   -- 4 displaying text
-  scrolloff = 5,
+  scrolloff = 3,
   sidescrolloff = 8,
   fillchars = {
     fold = " ",
