@@ -4,6 +4,26 @@ return {
   {
     "saghen/blink.cmp",
     opts = {
+      completion = {
+        keyword = { range = "prefix" },
+        list = {
+          selection = { preselect = true, auto_insert = false },
+        },
+      },
+      sources = {
+        default = function()
+          local success, node = pcall(vim.treesitter.get_node)
+          if
+            success
+            and node
+            and vim.tbl_contains({ "comment", "line_comment", "block_comment", "comment_content" }, node:type())
+          then
+            return { "buffer" }
+          else
+            return { "lsp", "path", "snippets", "buffer" }
+          end
+        end,
+      },
       keymap = {
         preset = "enter",
         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
