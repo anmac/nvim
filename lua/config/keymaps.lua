@@ -52,6 +52,10 @@ keymap("i", "<C-j>", "<Down>", opts())
 keymap("i", "<C-k>", "<Up>", opts())
 keymap("i", "<C-l>", "<Right>", opts())
 
+-- Buffers
+keymap("n", "<A-Left>", "<cmd>bprevious<cr>", opts("Prev Buffer"))
+keymap("n", "<A-Right>", "<cmd>bnext<cr>", opts("Next Buffer"))
+
 -- Stay cursor in place
 keymap("n", "J", "mzJ`z", opts())
 
