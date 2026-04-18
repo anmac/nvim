@@ -3,6 +3,7 @@ return {
   -- catppuccin
   {
     "catppuccin/nvim",
+    lazy = true,
     name = "catppuccin",
     opts = {
       term_colors = true,
