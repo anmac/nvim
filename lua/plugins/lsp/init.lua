@@ -3,46 +3,6 @@ return {
   -- LSP keymaps
   {
     "neovim/nvim-lspconfig",
-    init = function()
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      -- disable a keymap
-      keys[9] = { "<c-K>", false }
-      vim.list_extend(keys, {
-        {
-          "<C-p>",
-          function()
-            Snacks.picker.lsp_symbols({
-              filter = {
-                default = {
-                  "Class",
-                  "Constructor",
-                  "Enum",
-                  "Function",
-                  "Method",
-                  "Property",
-                  "Struct",
-                  "Trait",
-                },
-                markdown = false,
-                help = false,
-                lua = {
-                  "Class",
-                  "Constructor",
-                  "Enum",
-                  "Function",
-                  "Method",
-                  "Property",
-                  "Struct",
-                  "Trait",
-                },
-              },
-            })
-          end,
-          desc = "LSP Functions/Methods",
-          has = "documentSymbol",
-        },
-      })
-    end,
     opts = {
       diagnostics = {
         float = {
@@ -57,6 +17,40 @@ return {
         enabled = false,
       },
       servers = {
+        ["*"] = {
+          keys = {
+            {
+              "<leader><c-o>",
+              function()
+                Snacks.picker.lsp_symbols({
+                  tree = true,
+                  keep_parents = false,
+                  filter = {
+                    default = {
+                      -- "Class",
+                      -- "Constructor",
+                      -- "Enum",
+                      "Function",
+                      "Method",
+                      "Property",
+                      -- "Struct",
+                      -- "Trait",
+                    },
+                    markdown = false,
+                    help = true,
+                    lua = {
+                      "Function",
+                      "Method",
+                      "Property",
+                    },
+                  },
+                })
+              end,
+              desc = "LSP Functions/Methods",
+              has = "documentSymbol",
+            },
+          },
+        },
         yamlls = {
           filetypes = {
             "yaml",
